@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Mountain View Village Estate – Robertson, Western Cape</title>
+  <meta name="description" content="Mountain View Village Estate in Robertson, Western Cape. Premium freestanding homes from R1,999,000. 24hr security, fibre, pet-friendly. Cnr Paul Kruger &amp; Waterkant."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <style>
+    html,body{margin:0;padding:0;}
+    *,*::before,*::after{box-sizing:border-box;}
+
+    /* ── BRAND TOKENS (Option A — Final Approved) ── */
+    :root{
+      --burgundy:   #9A090D;   /* Deep Burgundy — CTA, accent (10% use) */
+      --burgundy-d: #7a0709;   /* hover state */
+      --charcoal:   #404041;   /* Charcoal Grey — headings, dark sections */
+      --soft-char:  #616161;   /* Soft Charcoal — body copy */
+      --cream:      #F2EDE4;   /* Warm Cream — section backgrounds */
+      --stone:      #D8CFC0;   /* Stone Beige — borders, cards */
+      --white:      #FFFFFF;   /* Warm White — negative space */
+      --header-h:   80px;
+    }
+
+    html{scroll-behavior:smooth;}
+    body{font-family:'Montserrat',sans-serif;color:var(--soft-char);background:var(--white);line-height:1.7;overflow-x:hidden;}
+
+    /* ── HEADER ── */
+    #site-header{
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      background:var(--cream);
+      height:var(--header-h);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 56px;
+      border-bottom:1px solid var(--stone);
+      transition:box-shadow 0.3s;
+    }
+    #site-header.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.08);}
+    .header-logo img{height:52px;width:auto;display:block;}
+    nav{display:flex;gap:28px;align-items:center;}
+    nav a{
+      color:var(--charcoal);text-decoration:none;
+      font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      transition:color 0.2s;padding-bottom:2px;
+      border-bottom:1.5px solid transparent;
+      cursor:pointer;
+    }
+    nav a:hover{color:var(--burgundy);border-bottom-color:var(--burgundy);}
+    .header-right{display:flex;align-items:center;gap:16px;}
+    .header-phone{color:var(--charcoal);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:0.5px;transition:color 0.2s;}
+    .header-phone:hover{color:var(--burgundy);}
+    .header-cta{
+      background:var(--burgundy);color:var(--white);text-decoration:none;
+      padding:11px 24px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      border-radius:1px;transition:background 0.2s;
+    }
+    .header-cta:hover{background:var(--burgundy-d);}
+
+    /* ── HERO ── */
+    #hero{
+      height:100vh;min-height:680px;position:relative;
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;
+    }
+    #hero-bg{
+      position:absolute;inset:0;
+      background:url('mvv-assets/hero-aerial-clean.jpg') center 35%/cover no-repeat;
+      transform:scale(1.04);transition:transform 8s ease-out;
+    }
+    #hero-bg.loaded{transform:scale(1);}
+    #hero-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to bottom,rgba(0,0,0,0.22) 0%,rgba(0,0,0,0.45) 55%,rgba(0,0,0,0.65) 100%);
+    }
+    #hero-content{
+      position:relative;z-index:2;text-align:center;
+      color:var(--white);padding:0 24px;max-width:860px;
+    }
+    .hero-logo{
+      width:min(400px,70vw);margin:0 auto 28px;display:block;
+      filter:drop-shadow(0 4px 24px rgba(0,0,0,0.5));
+    }
+    .hero-divider{
+      width:min(300px,60vw);margin:0 auto 24px;display:block;opacity:0.55;
+      filter:brightness(0) invert(1);
+    }
+    #hero-content h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(14px,2.2vw,19px);
+      font-weight:400;letter-spacing:3.5px;text-transform:uppercase;
+      color:rgba(255,255,255,0.85);margin-bottom:28px;
+    }
+    #hero-content p{
+      font-size:clamp(13px,1.6vw,16px);font-weight:300;
+      color:rgba(255,255,255,0.78);margin-bottom:44px;
+      max-width:560px;margin-left:auto;margin-right:auto;line-height:1.8;
+    }
+    .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+    .btn-primary{
+      background:var(--burgundy);color:var(--white);text-decoration:none;
+      padding:16px 42px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+      border-radius:1px;transition:all 0.2s;
+    }
+    .btn-primary:hover{background:var(--burgundy-d);transform:translateY(-1px);}
+    .btn-outline{
+      border:1.5px solid rgba(255,255,255,0.7);color:var(--white);text-decoration:none;
+      padding:16px 42px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+      border-radius:1px;transition:all 0.2s;
+    }
+    .btn-outline:hover{background:rgba(255,255,255,0.1);border-color:white;}
+    .scroll-hint{
+      position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+      z-index:2;color:rgba(255,255,255,0.4);font-size:9px;letter-spacing:3px;text-transform:uppercase;
+      display:flex;flex-direction:column;align-items:center;gap:10px;
+    }
+    .scroll-hint::after{
+      content:'';width:1px;height:44px;
+      background:linear-gradient(to bottom,rgba(255,255,255,0.5),rgba(255,255,255,0));
+      animation:scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse{0%,100%{opacity:.2;transform:scaleY(0.8)}50%{opacity:.8;transform:scaleY(1)}}
+
+    /* ── SECTION UTILITIES ── */
+    section{padding:100px 0;}
+    .container{max-width:1200px;margin:0 auto;padding:0 56px;}
+    .section-cream{background:var(--cream);}
+    .section-dark{background:var(--charcoal);color:var(--white);}
+    .section-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--burgundy);font-weight:700;margin-bottom:14px;display:block;}
+    .section-label-light{color:rgba(255,255,255,0.4);}
+    h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:600;line-height:1.15;margin-bottom:20px;color:var(--charcoal);}
+    .section-dark h2.section-title{color:var(--white);}
+    .divider{width:40px;height:2px;background:var(--burgundy);margin:0 0 32px;}
+    .divider.c{margin:0 auto 32px;}
+    .divider.light{background:rgba(255,255,255,0.25);}
+
+    /* ── TAGLINE BANNER ── */
+    .tagline-banner{
+      background:var(--cream);padding:22px 56px;text-align:center;
+      border-top:1px solid var(--stone);border-bottom:1px solid var(--stone);
+    }
+    .tagline-banner img{height:34px;width:auto;opacity:0.7;}
+
+    /* ── THE ESTATE ── */
+    #estate{background:var(--white);}
+    #estate .grid2{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    #estate p{color:var(--soft-char);margin-bottom:16px;font-size:15px;font-weight:300;line-height:1.8;}
+    .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border:1px solid var(--stone);}
+    .stat-box{padding:20px 16px;text-align:center;border-right:1px solid var(--stone);}
+    .stat-box:last-child{border-right:none;}
+    .stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--charcoal);}
+    .stat-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft-char);margin-top:4px;}
+    .estate-img{width:100%;height:480px;object-fit:cover;display:block;}
+    .img-caption{background:var(--cream);border-top:1px solid var(--stone);color:var(--soft-char);padding:12px 16px;font-size:11px;font-style:italic;letter-spacing:0.5px;}
+
+    /* ── LIFESTYLE ── */
+    #lifestyle{background:var(--charcoal);color:var(--white);}
+    .lifestyle-intro{text-align:center;max-width:640px;margin:0 auto 60px;}
+    .lifestyle-intro p{color:rgba(255,255,255,0.55);font-weight:300;font-size:15px;}
+    .amenities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);}
+    .amenity{background:var(--charcoal);padding:44px 36px;transition:background 0.3s;}
+    .amenity:hover{background:#4a4a4b;}
+    .amenity-icon{width:44px;height:44px;margin-bottom:22px;color:var(--burgundy);}
+    .amenity-icon svg{width:100%;height:100%;}
+    .amenity h3{font-family:'Playfair Display',serif;font-size:19px;margin-bottom:10px;font-weight:600;color:var(--white);}
+    .amenity p{font-size:13px;color:rgba(255,255,255,0.48);font-weight:300;line-height:1.7;}
+    .lifestyle-images{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3px;margin-top:3px;}
+    .lifestyle-images img{width:100%;height:280px;object-fit:cover;display:block;transition:transform 0.5s;}
+    .lifestyle-images img:hover{transform:scale(1.02);}
+
+    /* ── PLOTS ── */
+    #plots{background:var(--white);}
+    .plots-top{margin-bottom:48px;}
+    .plots-summary{
+      display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+      background:var(--cream);padding:64px;border:1px solid var(--stone);
+    }
+    .ps-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--stone);margin-bottom:32px;}
+    .ps-stat{padding:24px 20px;text-align:center;border-right:1px solid var(--stone);}
+    .ps-stat:last-child{border-right:none;}
+    .ps-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--charcoal);line-height:1.2;}
+    .ps-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft-char);margin-top:4px;}
+    .ps-note{font-size:14px;color:var(--soft-char);line-height:1.8;margin-bottom:32px;font-weight:300;}
+    .ps-actions{display:flex;gap:14px;flex-wrap:wrap;}
+    .btn-dark{
+      background:var(--charcoal);color:var(--white);text-decoration:none;
+      padding:14px 32px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      border-radius:1px;transition:background 0.2s;display:inline-block;
+    }
+    .btn-dark:hover{background:var(--burgundy);}
+    .btn-outline-dark{
+      border:1.5px solid var(--charcoal);color:var(--charcoal);text-decoration:none;
+      padding:14px 32px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      border-radius:1px;transition:all 0.2s;display:inline-block;
+    }
+    .btn-outline-dark:hover{background:var(--charcoal);color:var(--white);}
+    .ps-right h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:600;margin-bottom:16px;color:var(--charcoal);}
+    .ps-right p{font-size:14px;color:var(--soft-char);font-weight:300;line-height:1.8;margin-bottom:16px;}
+    .availability-list{list-style:none;border-top:1px solid var(--stone);margin-top:24px;}
+    .availability-list li{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 0;border-bottom:1px solid var(--stone);font-size:13px;
+    }
+    .availability-list .al-type{font-weight:600;color:var(--charcoal);}
+    .availability-list .al-status{
+      font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+      padding:4px 12px;border-radius:2px;
+    }
+    .al-available{background:#DCFCE7;color:#166534;}
+    .al-show{background:#FEF9C3;color:#854D0E;}
+    .phase2-banner{
+      margin-top:3px;background:var(--charcoal);padding:56px 64px;
+      display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;
+    }
+    .phase2-banner h3{font-family:'Playfair Display',serif;font-size:26px;color:var(--white);margin-bottom:8px;}
+    .phase2-banner p{color:rgba(255,255,255,0.48);font-size:14px;font-weight:300;max-width:480px;}
+    .btn-outline-light{
+      border:1.5px solid rgba(255,255,255,0.35);color:var(--white);text-decoration:none;
+      padding:14px 32px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      border-radius:1px;transition:all 0.2s;white-space:nowrap;
+    }
+    .btn-outline-light:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.7);}
+
+    /* ── SITE PLAN / INTERACTIVE PLOT MAP ── */
+    .plot-map-section{background:var(--charcoal);padding:80px 0 0;}
+    .plot-map-header{text-align:center;padding:0 24px 40px;}
+    .plot-map-header .section-title{color:var(--cream);}
+    .plot-map-header p{color:rgba(255,255,255,0.4);font-size:14px;max-width:480px;margin:0 auto;}
+    .plot-stats{display:flex;justify-content:center;gap:56px;padding-bottom:40px;}
+    .plot-stat{display:flex;flex-direction:column;align-items:center;gap:5px;}
+    .plot-stat .stat-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;}
+    .stat-num.available{color:#76b852;}
+    .stat-num.sold{color:#9E9E9E;}
+    .stat-num.phase2{color:#E8B84B;}
+    .plot-stat .stat-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+    .plot-map-wrap{position:relative;line-height:0;overflow:hidden;cursor:crosshair;}
+    .plot-map-img{width:100%;height:auto;display:block;transition:filter 0.4s ease;}
+    .plot-map-wrap:hover .plot-map-img{filter:brightness(0.85);}
+    .plot-map-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:all;overflow:visible;}
+    .plot-poly{cursor:pointer;transition:fill-opacity 0.2s ease,stroke-opacity 0.2s ease,filter 0.2s ease;}
+    .plot-poly.a{fill:#76b852;fill-opacity:0.06;stroke:#76b852;stroke-width:1.5;stroke-opacity:0.45;}
+    .plot-poly.s{fill:#9E9E9E;fill-opacity:0.06;stroke:#9E9E9E;stroke-width:1.5;stroke-opacity:0.35;cursor:default;}
+    .plot-poly.p{fill:#E8B84B;fill-opacity:0.06;stroke:#E8B84B;stroke-width:1.5;stroke-opacity:0.45;}
+    .plot-poly.a:hover{fill-opacity:0.28;stroke-opacity:1;filter:drop-shadow(0 0 8px #76b852);}
+    .plot-poly.p:hover{fill-opacity:0.28;stroke-opacity:1;filter:drop-shadow(0 0 8px #E8B84B);}
+    .plot-map-legend{
+      position:absolute;top:16px;right:16px;
+      background:rgba(8,8,8,0.72);backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.1);
+      padding:12px 16px;border-radius:3px;
+      display:flex;flex-direction:column;gap:9px;
+    }
+    .legend-row{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:rgba(255,255,255,0.8);white-space:nowrap;}
+    .leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+    .leg-dot.a{background:#76b852;}
+    .leg-dot.s{background:#9E9E9E;}
+    .leg-dot.p{background:#E8B84B;}
+    .plot-tooltip{
+      position:absolute;
+      background:rgba(8,8,8,0.93);backdrop-filter:blur(14px);
+      border:1px solid rgba(255,255,255,0.12);border-radius:3px;
+      padding:14px 18px;pointer-events:none;
+      opacity:0;transition:opacity 0.15s ease;
+      white-space:nowrap;z-index:20;
+      transform:translate(-50%,-115%);
+      min-width:180px;line-height:1;
+    }
+    .plot-tooltip.vis{opacity:1;}
+    .tt-status{
+      font-family:'Playfair Display',serif;font-size:12px;font-style:italic;font-weight:400;
+      display:block;margin-bottom:10px;padding-bottom:10px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+    .tt-plotnum{
+      font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      color:rgba(255,255,255,0.4);display:block;margin-bottom:7px;
+    }
+    .tt-size{
+      font-size:15px;font-weight:600;color:var(--white);
+      display:block;margin-bottom:7px;
+    }
+    .tt-price{
+      font-size:12px;color:rgba(255,255,255,0.6);
+      display:block;margin-bottom:0;
+    }
+    .tt-cta{
+      font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+      color:var(--burgundy);display:block;
+      margin-top:11px;padding-top:10px;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+    .plot-map-hint{
+      text-align:center;font-size:10px;font-weight:600;letter-spacing:2px;
+      text-transform:uppercase;color:rgba(255,255,255,0.18);padding:14px 0 36px;
+      background:var(--charcoal);
+    }
+
+    /* ── ESTATE INTRO IMAGE ── */
+    .estate-intro-section{position:relative;overflow:hidden;}
+    .estate-intro-section img{width:100%;height:auto;display:block;transition:transform 8s ease;}
+    .estate-intro-section:hover img{transform:scale(1.02);}
+    .estate-intro-caption{
+      position:absolute;bottom:0;left:0;right:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 100%);
+      padding:40px 64px 32px;color:white;
+    }
+    .estate-intro-caption p{
+      font-family:'Playfair Display',serif;font-size:clamp(18px,2.2vw,26px);
+      font-style:italic;font-weight:400;opacity:0.88;
+    }
+
+    /* ── HOME DESIGNS ── */
+    #homes{background:var(--cream);}
+    .homes-intro{text-align:center;margin-bottom:48px;}
+    .homes-intro p{color:var(--soft-char);max-width:580px;margin:0 auto;font-size:14px;}
+    .homes-tabs{display:flex;border-bottom:1px solid var(--stone);margin-bottom:48px;overflow-x:auto;}
+    .home-tab{
+      padding:14px 30px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      cursor:pointer;background:transparent;border:none;border-bottom:2px solid transparent;
+      color:var(--soft-char);transition:all 0.2s;white-space:nowrap;font-family:'Montserrat',sans-serif;
+    }
+    .home-tab.active{color:var(--charcoal);border-bottom-color:var(--burgundy);}
+    .home-tab:hover{color:var(--charcoal);}
+    .home-panel{display:none;}
+    .home-panel.active{display:block;}
+    .home-detail{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+    .plan-box{
+      background:var(--white);border:1px solid var(--stone);padding:8px;
+      display:flex;align-items:center;justify-content:center;min-height:380px;overflow:hidden;
+    }
+    .plan-box img{width:100%;height:auto;max-height:480px;object-fit:contain;display:block;}
+    .home-info h3{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;margin-bottom:6px;color:var(--charcoal);}
+    .home-subtitle{color:var(--soft-char);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:28px;}
+    .specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;}
+    .spec{background:var(--white);padding:14px 16px;border-left:2px solid var(--burgundy);}
+    .spec .sv{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1;color:var(--charcoal);}
+    .spec .sk{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft-char);margin-top:3px;}
+    .price-block{background:var(--charcoal);padding:24px;margin-bottom:24px;}
+    .price-block .pl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:4px;}
+    .price-block .po{font-size:13px;color:rgba(255,255,255,0.28);text-decoration:line-through;margin-bottom:2px;}
+    .price-block .ps{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--white);}
+    .price-block .pn{font-size:11px;color:rgba(255,255,255,0.32);margin-top:4px;}
+    .home-features{list-style:none;margin-bottom:28px;}
+    .home-features li{font-size:13px;color:var(--soft-char);padding:8px 0;border-bottom:1px solid var(--stone);display:flex;align-items:center;gap:10px;}
+    .home-features li::before{content:'—';color:var(--burgundy);font-weight:700;font-size:11px;flex-shrink:0;}
+    .plan-dl{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--burgundy);text-decoration:none;border-bottom:1px solid var(--burgundy);padding-bottom:2px;transition:opacity 0.2s;}
+    .plan-dl:hover{opacity:0.7;}
+    .action-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+
+    /* ── LOCATION ── */
+    #location{background:var(--white);}
+    #location .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+    .loc-list{list-style:none;}
+    .loc-list li{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--stone);}
+    .loc-icon{width:40px;height:40px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--burgundy);}
+    .loc-icon svg{width:22px;height:22px;}
+    .loc-list h4{font-size:14px;font-weight:600;margin-bottom:2px;color:var(--charcoal);}
+    .loc-list p{font-size:13px;color:var(--soft-char);}
+    .loc-address{
+      background:var(--cream);padding:16px 20px;margin-bottom:28px;
+      border-left:3px solid var(--burgundy);font-size:14px;color:var(--soft-char);
+    }
+    .loc-address strong{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft-char);margin-bottom:4px;}
+    .map-wrap{width:100%;height:440px;border:1px solid var(--stone);overflow:hidden;}
+    .map-wrap iframe{width:100%;height:100%;border:none;filter:grayscale(15%);}
+
+    /* ── GALLERY ── */
+    #gallery{background:var(--charcoal);padding-bottom:0;}
+    #gallery .gh{text-align:center;margin-bottom:48px;}
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      grid-template-rows:260px 260px;
+      gap:3px;
+    }
+    .gi{overflow:hidden;position:relative;}
+    .gi img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
+    .gi:hover img{transform:scale(1.05);}
+    .gi:nth-child(1){grid-column:span 6;}
+    .gi:nth-child(2){grid-column:span 3;}
+    .gi:nth-child(3){grid-column:span 3;}
+    .gi:nth-child(4){grid-column:span 4;}
+    .gi:nth-child(5){grid-column:span 4;}
+    .gi:nth-child(6){grid-column:span 4;}
+    .gallery-note{text-align:center;padding:28px;color:rgba(255,255,255,0.3);font-size:12px;letter-spacing:1px;background:var(--charcoal);}
+
+    /* ── CONTACT ── */
+    #contact{background:var(--cream);}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+    .contact-form h3{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:6px;color:var(--charcoal);}
+    .contact-form>p{color:var(--soft-char);font-size:14px;margin-bottom:28px;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .fg{margin-bottom:14px;}
+    .fg label{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft-char);margin-bottom:5px;}
+    .fg input,.fg select,.fg textarea{
+      width:100%;padding:12px 14px;border:1px solid var(--stone);background:var(--white);
+      font-family:'Montserrat',sans-serif;font-size:13px;color:var(--charcoal);outline:none;
+      border-radius:1px;transition:border-color 0.2s;
+    }
+    .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--burgundy);}
+    .fg textarea{height:110px;resize:vertical;}
+    .form-submit{
+      width:100%;background:var(--charcoal);color:var(--white);border:none;
+      padding:15px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:1px;transition:background 0.2s;
+    }
+    .form-submit:hover{background:var(--burgundy);}
+    .contact-info h3{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:28px;color:var(--charcoal);}
+    .cd{display:flex;gap:14px;margin-bottom:24px;align-items:flex-start;}
+    .cd-icon{
+      width:42px;height:42px;background:var(--charcoal);color:var(--white);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    }
+    .cd-icon svg{width:18px;height:18px;fill:white;}
+    .cd-text h4{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft-char);margin-bottom:3px;}
+    .cd-text a,.cd-text p{font-size:14px;color:var(--charcoal);text-decoration:none;font-weight:500;}
+    .cd-text a:hover{color:var(--burgundy);}
+    .social-block{margin-top:32px;padding-top:28px;border-top:1px solid var(--stone);}
+    .social-block h4{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--soft-char);margin-bottom:14px;}
+    .fb-link{
+      display:inline-flex;align-items:center;gap:8px;background:#1877F2;color:white;
+      text-decoration:none;padding:10px 20px;font-size:12px;font-weight:600;border-radius:2px;transition:opacity 0.2s;
+    }
+    .fb-link:hover{opacity:0.85;}
+
+    /* ── FOOTER ── */
+    footer{background:var(--charcoal);color:var(--white);padding:64px 0 32px;}
+    .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:60px;margin-bottom:48px;}
+    .footer-brand .mvv-logo{height:60px;width:auto;margin-bottom:20px;display:block;}
+    .footer-brand p{font-size:13px;color:rgba(255,255,255,0.42);line-height:1.7;max-width:280px;margin-bottom:24px;}
+    .propco-footer{display:flex;flex-direction:column;gap:8px;}
+    .propco-footer img{height:26px;width:auto;opacity:0.65;}
+    .propco-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.28);}
+    .footer-col h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:18px;}
+    .footer-col a,.footer-col p{display:block;font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;margin-bottom:9px;transition:color 0.2s;}
+    .footer-col a:hover{color:var(--white);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .footer-bottom p{font-size:11px;color:rgba(255,255,255,0.22);}
+    .tagline-footer img{height:20px;width:auto;opacity:0.35;}
+
+    /* ── WHATSAPP ── */
+    #wa{
+      position:fixed;bottom:32px;right:32px;z-index:999;
+      width:58px;height:58px;background:#25D366;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 4px 20px rgba(37,211,102,0.4);text-decoration:none;
+      animation:wap 2.5s ease-in-out infinite;transition:transform 0.2s,box-shadow 0.2s;
+    }
+    #wa:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(37,211,102,0.6);animation:none;}
+    #wa svg{width:30px;height:30px;fill:white;}
+    @keyframes wap{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 32px rgba(37,211,102,0.7)}}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){
+      .header-phone{display:none;}
+      .header-cta{position:relative;}
+      .header-cta::after{
+        content:'023 880 0100';
+        position:absolute;top:calc(100% + 8px);right:0;
+        background:var(--charcoal);color:white;
+        padding:8px 14px;font-size:12px;font-weight:700;
+        letter-spacing:0.5px;text-transform:none;
+        border-radius:2px;white-space:nowrap;
+        opacity:0;pointer-events:none;transition:opacity 0.2s;
+        box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      }
+      .header-cta:hover::after{opacity:1;}
+    }
+    @media(max-width:900px){
+      nav{display:none;}
+      #site-header{padding:0 24px;}
+      .container{padding:0 24px;}
+      section{padding:64px 0;}
+      #estate .grid2,#location .loc-grid,.contact-grid,.home-detail{grid-template-columns:1fr;gap:40px;}
+      .footer-grid{grid-template-columns:1fr;gap:40px;}
+      .amenities-grid{grid-template-columns:1fr 1fr;}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+      .gi{grid-column:span 1!important;height:220px;}
+      .lifestyle-images{grid-template-columns:1fr 1fr;}
+      .lifestyle-images img:last-child{display:none;}
+      .form-row{grid-template-columns:1fr;}
+      .stat-row{grid-template-columns:1fr 1fr;}
+      .stat-box:nth-child(2){border-right:none;}
+      .stat-box:nth-child(1),.stat-box:nth-child(2){border-bottom:1px solid var(--stone);}
+      .plots-summary{grid-template-columns:1fr;gap:40px;padding:40px 32px;}
+      .phase2-banner{grid-template-columns:1fr;padding:40px 32px;}
+      .estate-intro-caption{padding:24px 32px 20px;}
+      .plot-stats{gap:28px;}
+      .plot-stat .stat-num{font-size:32px;}
+      .plot-map-legend{top:8px;right:8px;padding:8px 10px;gap:6px;}
+      .legend-row{font-size:9px;gap:6px;}
+      .leg-dot{width:8px;height:8px;}
+    }
+    @media(max-width:480px){
+      .amenities-grid{grid-template-columns:1fr;}
+      .specs-grid{grid-template-columns:1fr 1fr;}
+      .hero-btns{flex-direction:column;align-items:center;}
+      .ps-stats{grid-template-columns:1fr;}
+      .ps-stat{border-right:none;border-bottom:1px solid var(--stone);}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<header id="site-header">
+  <a href="#hero" class="header-logo">
+    <img src="mvv-assets/logo.png" alt="Mountain View Village Estate"/>
+  </a>
+  <nav>
+    <a href="#estate">The Estate</a>
+    <a href="#lifestyle">Lifestyle</a>
+    <a href="#plots">Plots</a>
+    <a href="#homes">Homes</a>
+    <a href="#location">Location</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="header-right">
+    <a href="tel:+27238800100" class="header-phone">023 880 0100</a>
+    <a href="#contact" class="header-cta">Enquire Now</a>
+  </div>
+</header>
+
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+  <div id="hero-bg"></div>
+  <div id="hero-overlay"></div>
+  <div id="hero-content">
+    <img src="mvv-assets/mvv-brand.png" alt="Mountain View Village Estate" class="hero-logo"/>
+    <img src="mvv-assets/robertson-divider.jpg" alt="" class="hero-divider" aria-hidden="true"/>
+    <h1>A Gated Estate in the Heart of the Breede River Valley</h1>
+    <p>Modern freestanding homes nestled beneath the Langeberg Mountains — where security, community and natural beauty come together.</p>
+    <div class="hero-btns">
+      <a href="#plots" class="btn-primary">Explore Plots</a>
+      <a href="#homes" class="btn-outline">View Home Designs</a>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- ═══════ TAGLINE BANNER ═══════ -->
+<div class="tagline-banner">
+  <img src="mvv-assets/tagline.png" alt="Estate living, beautifully rooted in Robertson."/>
+</div>
+
+<!-- ═══════ THE ESTATE ═══════ -->
+<section id="estate">
+  <div class="container">
+    <div class="grid2">
+      <div>
+        <span class="section-label">The Estate</span>
+        <h2 class="section-title">A Village<br/>Worth Coming<br/>Home To</h2>
+        <div class="divider"></div>
+        <p>Mountain View Village Estate is a thoughtfully designed gated residential development in Robertson — one of South Africa's most celebrated valley towns, known for its wine estates, warm community, and spectacular mountain scenery.</p>
+        <p>Located on the corner of Paul Kruger Street and Waterkant Street, the estate offers freestanding homes on 270m² stands that combine quality construction, smart design and the peaceful rhythm of Boland small-town living.</p>
+        <p>Whether you're looking for a permanent home, retirement destination, or a sound investment in the Western Cape interior, Mountain View Village is where your next chapter begins.</p>
+      </div>
+      <div>
+        <img src="mvv-assets/entrance.png" alt="Mountain View Village Estate entrance" class="estate-img"/>
+        <p class="img-caption">Gated entrance — Corner Paul Kruger &amp; Waterkant, Robertson</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════ LIFESTYLE / AMENITIES ═══════ -->
+<section id="lifestyle">
+  <div class="container">
+    <div class="lifestyle-intro">
+      <span class="section-label section-label-light">The Lifestyle</span>
+      <h2 class="section-title">Everything You Need,<br/>Nothing You Don't</h2>
+      <div class="divider c light"></div>
+      <p>Mountain View Village is designed for people who value peace, security and connection — without sacrificing comfort or convenience.</p>
+    </div>
+    <div class="amenities-grid">
+
+      <div class="amenity">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <h3>24-Hour Security</h3>
+        <p>Access-controlled entrance with 24-hour security monitoring gives residents complete peace of mind around the clock.</p>
+      </div>
+
+      <div class="amenity">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1.42 9a16 16 0 0121.16 0"/>
+            <path d="M5 12.55a11 11 0 0114.08 0"/>
+            <path d="M8.53 16.11a6 6 0 016.95 0"/>
+            <circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <h3>Fibre Connectivity</h3>
+        <p>High-speed fibre internet throughout the estate. Work remotely, stream, connect — without compromise.</p>
+      </div>
+
+      <div class="amenity">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="4.5" cy="9" r="2"/><circle cx="9.5" cy="5.5" r="2"/>
+            <circle cx="14.5" cy="5.5" r="2"/><circle cx="19.5" cy="9" r="2"/>
+            <path d="M17.34 14.71c-1.56-2-3.08-2.71-5.34-2.71s-3.78.71-5.34 2.71C5.1 16.71 5 20 7.96 20h8.08c2.96 0 2.86-3.29 1.3-5.29z"/>
+          </svg>
+        </div>
+        <h3>Pet-Friendly</h3>
+        <p>Mountain View Village welcomes your four-legged family. Open spaces and a relaxed environment make it ideal for pets.</p>
+      </div>
+
+      <div class="amenity">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Clubhouse</h3>
+        <p>A shared clubhouse space for residents to connect, socialise, and build the kind of neighbourhood that lasts.</p>
+      </div>
+
+      <div class="amenity">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 22 22 22"/>
+            <line x1="12" y1="9" x2="12" y2="15"/><line x1="9" y1="15" x2="15" y2="15"/>
+          </svg>
+        </div>
+        <h3>Mountain Views</h3>
+        <p>Wake up to the Langeberg Mountains every morning. A backdrop that never loses its magic.</p>
+      </div>
+
+      <div class="amenity">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 8C8 10 5.9 16.17 3.82 19.34"/>
+            <path d="M3.82 19.34C5.21 19.71 8.12 20 12 18c5-2.5 6-8 6-8"/>
+            <path d="M14 11.56A11 11 0 013 19"/>
+          </svg>
+        </div>
+        <h3>Quiet Location</h3>
+        <p>Situated in a peaceful, established part of Robertson — away from the noise, close to everything that matters.</p>
+      </div>
+
+    </div>
+  </div>
+  <div class="lifestyle-images">
+    <img src="mvv-assets/robertson-town.png" alt="Robertson town nestled in the Breede River Valley"/>
+    <img src="mvv-assets/river.jpg" alt="Breede River near Robertson"/>
+    <img src="mvv-assets/mountain1.jpg" alt="Langeberg Mountains"/>
+  </div>
+</section>
+
+<!-- ═══════ AVAILABLE PLOTS ═══════ -->
+<section id="plots">
+  <div class="container">
+    <div class="plots-top">
+      <span class="section-label">Available Plots</span>
+      <h2 class="section-title">Secure Your Stand</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="plots-summary">
+      <div class="ps-left">
+        <div class="ps-stats">
+          <div class="ps-stat"><div class="ps-num">Phase 1</div><div class="ps-lbl">Now Selling</div></div>
+          <div class="ps-stat"><div class="ps-num">From R600K</div><div class="ps-lbl">Land Price</div></div>
+          <div class="ps-stat"><div class="ps-num">270m²</div><div class="ps-lbl">Erf Size</div></div>
+        </div>
+        <p class="ps-note">Land &amp; Build packages available — secure your stand and select your house type in one contract. Pricing starts from R600,000 for land. Contact us to receive the full availability sheet and tailored quotation.</p>
+        <div class="ps-actions">
+          <a href="#contact" class="btn-dark">Request Availability</a>
+          <a href="https://wa.me/+27823451209?text=Hi%2C%20please%20send%20me%20the%20availability%20sheet%20for%20Mountain%20View%20Village." target="_blank" class="btn-outline-dark">WhatsApp Us</a>
+        </div>
+      </div>
+      <div class="ps-right">
+        <h3>What's Available</h3>
+        <p>Phase 1 stands are selling fast. A mix of standard and premium corner stands, with two show houses available for immediate occupation.</p>
+        <ul class="availability-list">
+          <li><span class="al-type">Standard Stands — from 268m²</span><span class="al-status al-available">Available</span></li>
+          <li><span class="al-type">Corner Stands — from 269m²</span><span class="al-status al-available">Available</span></li>
+          <li><span class="al-type">Show Houses — Built &amp; Ready</span><span class="al-status al-show">For Sale</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="phase2-banner">
+    <div>
+      <span class="section-label section-label-light">Coming Soon</span>
+      <h3>Phase 2 — Register Your Interest</h3>
+      <p>Phase 2 plots are being finalised. Register now to be first in line and receive exclusive pre-launch pricing and availability.</p>
+    </div>
+    <a href="#contact" class="btn-outline-light">Register Interest</a>
+  </div>
+</section>
+
+<!-- ═══════ INTERACTIVE PLOT MAP ═══════ -->
+<section id="site-plan" class="plot-map-section">
+  <div class="container">
+    <div class="plot-map-header">
+      <span class="section-label section-label-light">Development Overview</span>
+      <h2 class="section-title">Site Development Plan</h2>
+      <div class="divider c"></div>
+      <p>Hover over the estate rendering to explore plot availability across the development.</p>
+    </div>
+    <div class="plot-stats">
+      <div class="plot-stat"><span class="stat-num available" id="statAvail">—</span><span class="stat-label">Available</span></div>
+      <div class="plot-stat"><span class="stat-num sold" id="statSold">—</span><span class="stat-label">Sold</span></div>
+      <div class="plot-stat"><span class="stat-num phase2" id="statP2">—</span><span class="stat-label">Phase 2</span></div>
+    </div>
+  </div>
+  <div class="plot-map-wrap" id="plotMapWrap">
+    <img src="mvv-assets/estate-photo-main.jpg" alt="Mountain View Village — Site Development Plan" class="plot-map-img" id="plotMapImg"/>
+    <svg class="plot-map-svg" viewBox="0 0 1658 913" preserveAspectRatio="xMidYMid meet" id="plotSvg"></svg>
+    <div class="plot-map-legend">
+      <div class="legend-row"><span class="leg-dot a"></span><span>For Sale — Phase 1</span></div>
+      <div class="legend-row"><span class="leg-dot s"></span><span>Sold</span></div>
+      <div class="legend-row"><span class="leg-dot p"></span><span>Phase 2</span></div>
+    </div>
+    <div class="plot-tooltip" id="plotTooltip"></div>
+  </div>
+  <p class="plot-map-hint">Hover over the rendering to explore plot availability</p>
+</section>
+
+<!-- ═══════ HOME DESIGNS ═══════ -->
+<section id="homes">
+  <div class="container">
+    <div class="homes-intro">
+      <span class="section-label">Home Designs</span>
+      <h2 class="section-title">Five Ways to Call It Home</h2>
+      <div class="divider c"></div>
+      <p>Choose from five architecturally designed freestanding home types — each on a 270m² stand, with quality finishes, covered patio, and garage included.</p>
+    </div>
+
+    <div class="homes-tabs">
+      <button class="home-tab active" onclick="showHome('a1',this)">Type A1 — 94m²</button>
+      <button class="home-tab" onclick="showHome('a2',this)">Type A2 — 153m²</button>
+      <button class="home-tab" onclick="showHome('a3',this)">Type A3 — 153m²</button>
+      <button class="home-tab" onclick="showHome('b1',this)">Type B1 — 108m²</button>
+      <button class="home-tab" onclick="showHome('b2',this)">Type B2 — 120m²</button>
+    </div>
+
+    <!-- A1 -->
+    <div id="panel-a1" class="home-panel active">
+      <div class="home-detail">
+        <div class="plan-box"><img src="mvv-assets/floorplan-a1.png" alt="Type A1 — 94m² Floor Plan"/></div>
+        <div class="home-info">
+          <h3>Type A1</h3>
+          <p class="home-subtitle">2 Bedroom Freestanding &nbsp;·&nbsp; 94m² Total</p>
+          <div class="specs-grid">
+            <div class="spec"><div class="sv">2</div><div class="sk">Bedrooms</div></div>
+            <div class="spec"><div class="sv">1</div><div class="sk">Bathroom</div></div>
+            <div class="spec"><div class="sv">69m²</div><div class="sk">Dwelling</div></div>
+            <div class="spec"><div class="sv">21m²</div><div class="sk">Garage</div></div>
+          </div>
+          <div class="price-block">
+            <div class="pl">Special Launch Price</div>
+            <div class="po">R2,099,000</div>
+            <div class="ps">R1,999,000</div>
+            <div class="pn">Land &amp; Build &nbsp;·&nbsp; ERF 270m²</div>
+          </div>
+          <ul class="home-features">
+            <li>Open-plan kitchen / dining / lounge</li>
+            <li>Covered patio (4m²) with braai provision</li>
+            <li>Single garage (21m²) + driveway</li>
+            <li>Vinyl flooring throughout / tiled bathroom</li>
+            <li>Future double garage expansion possible</li>
+            <li>Future braai / afdak addition (+11m²)</li>
+          </ul>
+          <div class="action-row">
+            <a href="mvv-assets/type-a1.pdf" target="_blank" class="plan-dl">Download Floor Plan</a>
+            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Enquire Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- A2 -->
+    <div id="panel-a2" class="home-panel">
+      <div class="home-detail">
+        <div class="plan-box"><img src="mvv-assets/floorplan-a2.png" alt="Type A2 — 153m² Floor Plan"/></div>
+        <div class="home-info">
+          <h3>Type A2</h3>
+          <p class="home-subtitle">2 Bedroom + Braai Room &nbsp;·&nbsp; 153m² Total</p>
+          <div class="specs-grid">
+            <div class="spec"><div class="sv">2</div><div class="sk">Bedrooms</div></div>
+            <div class="spec"><div class="sv">2</div><div class="sk">Bathrooms</div></div>
+            <div class="spec"><div class="sv">108m²</div><div class="sk">Dwelling</div></div>
+            <div class="spec"><div class="sv">41m²</div><div class="sk">Double Garage</div></div>
+          </div>
+          <div class="price-block">
+            <div class="pl">Special Launch Price</div>
+            <div class="po">R2,972,000</div>
+            <div class="ps">R2,850,000</div>
+            <div class="pn">Land &amp; Build &nbsp;·&nbsp; ERF 270m²</div>
+          </div>
+          <ul class="home-features">
+            <li>Dedicated braai room off kitchen</li>
+            <li>En-suite main bedroom</li>
+            <li>Covered patio (4m²)</li>
+            <li>Spacious double garage (41m²)</li>
+            <li>Open-plan kitchen and lounge</li>
+            <li>Vinyl flooring / tiled bathrooms</li>
+          </ul>
+          <div class="action-row">
+            <a href="mvv-assets/type-a2.pdf" target="_blank" class="plan-dl">Download Floor Plan</a>
+            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Enquire Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- A3 -->
+    <div id="panel-a3" class="home-panel">
+      <div class="home-detail">
+        <div class="plan-box"><img src="mvv-assets/floorplan-a3.png" alt="Type A3 — 153m² Floor Plan"/></div>
+        <div class="home-info">
+          <h3>Type A3</h3>
+          <p class="home-subtitle">3 Bedroom + Braai Room &nbsp;·&nbsp; 153m² Total</p>
+          <div class="specs-grid">
+            <div class="spec"><div class="sv">3</div><div class="sk">Bedrooms</div></div>
+            <div class="spec"><div class="sv">2</div><div class="sk">Bathrooms</div></div>
+            <div class="spec"><div class="sv">110m²</div><div class="sk">Dwelling</div></div>
+            <div class="spec"><div class="sv">37m²</div><div class="sk">Double Garage</div></div>
+          </div>
+          <div class="price-block">
+            <div class="pl">Special Launch Price</div>
+            <div class="po">R2,972,000</div>
+            <div class="ps">R2,850,000</div>
+            <div class="pn">Land &amp; Build &nbsp;·&nbsp; ERF 270m²</div>
+          </div>
+          <ul class="home-features">
+            <li>3 bedrooms — ideal for families</li>
+            <li>En-suite main bedroom + family bathroom</li>
+            <li>Dedicated braai room</li>
+            <li>Covered patio (6m²)</li>
+            <li>Double garage (37m²)</li>
+            <li>Separate dining and lounge</li>
+          </ul>
+          <div class="action-row">
+            <a href="mvv-assets/type-a3.pdf" target="_blank" class="plan-dl">Download Floor Plan</a>
+            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Enquire Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B1 -->
+    <div id="panel-b1" class="home-panel">
+      <div class="home-detail">
+        <div class="plan-box"><img src="mvv-assets/floorplan-b1.png" alt="Type B1 — 108m² Floor Plan"/></div>
+        <div class="home-info">
+          <h3>Type B1</h3>
+          <p class="home-subtitle">2 Bedroom &nbsp;·&nbsp; 108m² Total</p>
+          <div class="specs-grid">
+            <div class="spec"><div class="sv">2</div><div class="sk">Bedrooms</div></div>
+            <div class="spec"><div class="sv">2</div><div class="sk">Bathrooms</div></div>
+            <div class="spec"><div class="sv">82m²</div><div class="sk">Dwelling</div></div>
+            <div class="spec"><div class="sv">22m²</div><div class="sk">Garage</div></div>
+          </div>
+          <div class="price-block">
+            <div class="pl">Special Launch Price</div>
+            <div class="po">R2,299,000</div>
+            <div class="ps">R2,249,000</div>
+            <div class="pn">Land &amp; Build &nbsp;·&nbsp; ERF 270m²</div>
+          </div>
+          <ul class="home-features">
+            <li>En-suite main bedroom</li>
+            <li>Separate kitchen and dining</li>
+            <li>Covered patio (4m²) with braai</li>
+            <li>Single garage (22m²)</li>
+            <li>Future double garage addition possible</li>
+            <li>Future braai room / 3rd bedroom option</li>
+          </ul>
+          <div class="action-row">
+            <a href="mvv-assets/type-b1.pdf" target="_blank" class="plan-dl">Download Floor Plan</a>
+            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Enquire Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B2 -->
+    <div id="panel-b2" class="home-panel">
+      <div class="home-detail">
+        <div class="plan-box"><img src="mvv-assets/floorplan-b2.png" alt="Type B2 — 120m² Floor Plan"/></div>
+        <div class="home-info">
+          <h3>Type B2</h3>
+          <p class="home-subtitle">2 Bedroom + Double Garage &nbsp;·&nbsp; 120m² Total</p>
+          <div class="specs-grid">
+            <div class="spec"><div class="sv">2</div><div class="sk">Bedrooms</div></div>
+            <div class="spec"><div class="sv">2</div><div class="sk">Bathrooms</div></div>
+            <div class="spec"><div class="sv">80m²</div><div class="sk">Dwelling</div></div>
+            <div class="spec"><div class="sv">35m²</div><div class="sk">Double Garage</div></div>
+          </div>
+          <div class="price-block">
+            <div class="pl">Special Launch Price</div>
+            <div class="po">R2,499,000</div>
+            <div class="ps">R2,399,000</div>
+            <div class="pn">Land &amp; Build &nbsp;·&nbsp; ERF 270m²</div>
+          </div>
+          <ul class="home-features">
+            <li>En-suite main bedroom</li>
+            <li>Generous double garage (35m²)</li>
+            <li>Covered patio (5m²)</li>
+            <li>Separate lounge and dining</li>
+            <li>Future braai room / 3rd bedroom option</li>
+            <li>Vinyl flooring / tiled bathrooms</li>
+          </ul>
+          <div class="action-row">
+            <a href="mvv-assets/type-b2.pdf" target="_blank" class="plan-dl">Download Floor Plan</a>
+            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Enquire Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ LOCATION ═══════ -->
+<section id="location">
+  <div class="container">
+    <div class="loc-grid">
+      <div>
+        <span class="section-label">Location</span>
+        <h2 class="section-title">Robertson,<br/>Western Cape</h2>
+        <div class="divider"></div>
+        <div class="loc-address">
+          <strong>Physical Address</strong>
+          Corner Paul Kruger Street &amp; Waterkant Street, Robertson, Western Cape, 6705
+        </div>
+        <ul class="loc-list">
+          <li>
+            <div class="loc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 22 22 22"/><line x1="12" y1="9" x2="12" y2="15"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div>
+            <div><h4>Langeberg Mountains</h4><p>Dramatic mountain backdrop visible across the estate — hiking, cycling and nature right on your doorstep.</p></div>
+          </li>
+          <li>
+            <div class="loc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22l4-10 4 10"/><path d="M12 12V4a2 2 0 10-4 0v1"/><path d="M20 8h-4"/><path d="M20 12h-4"/></svg></div>
+            <div><h4>Robertson Wine Route</h4><p>Over 50 wineries and cellars. One of South Africa's finest wine valleys, right in your backyard.</p></div>
+          </li>
+          <li>
+            <div class="loc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12c0-4 4-8 9-8s9 4 9 8-4 8-9 8-9-4-9-8z"/><path d="M12 4v16"/></svg></div>
+            <div><h4>Breede River</h4><p>Canoeing, fishing and riverside picnics along the scenic Breede River, just minutes away.</p></div>
+          </li>
+          <li>
+            <div class="loc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><h4>Amenities &amp; Schools</h4><p>Hospital, medical centres, primary and high schools, and full retail within Robertson town.</p></div>
+          </li>
+          <li>
+            <div class="loc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+            <div><h4>2 Hours from Cape Town</h4><p>Via the N1 or the scenic R60 through the Huguenot Tunnel. Easy weekend access from the city.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://maps.google.com/maps?q=Corner+Paul+Kruger+%26+Waterkant+Street%2C+Robertson%2C+Western+Cape%2C+6705%2C+South+Africa&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Mountain View Village location map">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ GALLERY ═══════ -->
+<section id="gallery">
+  <div class="container">
+    <div class="gh">
+      <span class="section-label section-label-light">Gallery</span>
+      <h2 class="section-title">The Estate in Pictures</h2>
+      <div class="divider c light"></div>
+    </div>
+  </div>
+  <div class="gallery-grid">
+    <div class="gi"><img src="mvv-assets/hero-aerial-clean.jpg" alt="Robertson Valley aerial view"/></div>
+    <div class="gi"><img src="mvv-assets/entrance.png" alt="Mountain View Village entrance"/></div>
+    <div class="gi"><img src="mvv-assets/mountain1.jpg" alt="Langeberg Mountains, Robertson"/></div>
+    <div class="gi"><img src="mvv-assets/robertson-town.png" alt="Robertson from above"/></div>
+    <div class="gi"><img src="mvv-assets/river.jpg" alt="Breede River near Robertson"/></div>
+    <div class="gi"><img src="mvv-assets/kitchen.jpg" alt="Standard kitchen finishes"/></div>
+  </div>
+  <p class="gallery-note">More photography and video coming soon &nbsp;·&nbsp; Contact us to arrange a site visit</p>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section id="contact">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:60px;">
+      <span class="section-label">Get in Touch</span>
+      <h2 class="section-title">Let's Find Your Home</h2>
+      <div class="divider c"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <h3>Send an Enquiry</h3>
+        <p>We'll respond within 24 hours.</p>
+        <form id="contact-form">
+          <div class="form-row">
+            <div class="fg"><label for="first_name">First Name</label><input id="first_name" type="text" name="first_name" placeholder="Your first name" required/></div>
+            <div class="fg"><label for="last_name">Last Name</label><input id="last_name" type="text" name="last_name" placeholder="Your last name" required/></div>
+          </div>
+          <div class="fg"><label for="email">Email Address</label><input id="email" type="email" name="email" placeholder="your@email.com" required/></div>
+          <div class="fg"><label for="phone">Phone Number</label><input id="phone" type="tel" name="phone" placeholder="+27 82 000 0000"/></div>
+          <div class="fg">
+            <label for="interest">I'm interested in</label>
+            <select id="interest" name="interest">
+              <option value="">— Select —</option>
+              <option>Plot only (land from R600,000)</option>
+              <option>Type A1 — R1,999,000</option>
+              <option>Type A2 — R2,850,000</option>
+              <option>Type A3 — R2,850,000</option>
+              <option>Type B1 — R2,249,000</option>
+              <option>Type B2 — R2,399,000</option>
+              <option>Phase 2 — Register Interest</option>
+              <option>General Information</option>
+            </select>
+          </div>
+          <div class="fg"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us what you're looking for..."></textarea></div>
+          <button type="submit" class="form-submit">Send Enquiry</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>Contact Details</h3>
+        <div class="cd">
+          <div class="cd-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="cd-text"><h4>Phone</h4><a href="tel:+27238800100">023 880 0100</a></div>
+        </div>
+        <div class="cd">
+          <div class="cd-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6" fill="none" stroke="white" stroke-width="2"/></svg></div>
+          <div class="cd-text"><h4>Email</h4><a href="mailto:Floreer@propcoza.co.za">Floreer@propcoza.co.za</a></div>
+        </div>
+        <div class="cd">
+          <div class="cd-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3" fill="none" stroke="white" stroke-width="1.5"/></svg></div>
+          <div class="cd-text"><h4>Address</h4><p>Cnr Paul Kruger &amp; Waterkant Street<br/>Robertson, Western Cape, 6705</p></div>
+        </div>
+        <div class="cd">
+          <div class="cd-icon"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05.003A11.974 11.974 0 000 12.05C0 14.146.547 16.19 1.588 17.993L.057 24l6.305-1.654A11.976 11.976 0 0012.05 24C18.604 24 24 18.605 24 12.05A11.973 11.973 0 0012.05.003z"/></svg></div>
+          <div class="cd-text"><h4>WhatsApp</h4><a href="https://wa.me/+27823451209" target="_blank">Message us on WhatsApp</a></div>
+        </div>
+        <div class="social-block">
+          <h4>Follow Us</h4>
+          <a href="https://www.facebook.com/PropCoZaFloreer" target="_blank" class="fb-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            PropCoZa Floreer
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="mvv-assets/logo.png" alt="Mountain View Village Estate" class="mvv-logo"/>
+        <p>A premium gated residential estate in Robertson, Western Cape — offering freestanding homes and stands in a secure, peaceful setting beneath the Langeberg Mountains.</p>
+        <div class="propco-footer">
+          <span class="propco-label">Marketed exclusively by</span>
+          <img src="mvv-assets/propco-logo.png" alt="Property.CoZa"/>
+          <span style="font-size:12px;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;">Floreer</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#estate">The Estate</a>
+        <a href="#lifestyle">Lifestyle</a>
+        <a href="#plots">Available Plots</a>
+        <a href="#homes">Home Designs</a>
+        <a href="#location">Location</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+27238800100">023 880 0100</a>
+        <a href="mailto:Floreer@propcoza.co.za">Floreer@propcoza.co.za</a>
+        <a href="https://wa.me/+27823451209" target="_blank">WhatsApp Us</a>
+        <a href="https://www.facebook.com/PropCoZaFloreer" target="_blank">Facebook</a>
+        <p style="margin-top:16px;line-height:1.6;">Cnr Paul Kruger &amp; Waterkant St<br/>Robertson, WC, 6705</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Mountain View Village Estate, Robertson. All rights reserved.</p>
+      <div class="tagline-footer">
+        <img src="mvv-assets/tagline.png" alt="Estate living, beautifully rooted in Robertson."/>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════ WHATSAPP FLOAT ═══════ -->
+<a id="wa" href="https://wa.me/+27823451209?text=Hi%2C%20I'm%20interested%20in%20Mountain%20View%20Village%20Estate%20in%20Robertson." target="_blank" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // Hero bg load
+  window.addEventListener('load',()=>{document.getElementById('hero-bg').classList.add('loaded');});
+
+  // Header scroll shadow
+  const hdr=document.getElementById('site-header');
+  window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+
+  // Smooth scroll with header offset
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){
+      const t=document.querySelector(this.getAttribute('href'));
+      if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-80,behavior:'smooth'});}
+    });
+  });
+
+  // Home type tabs
+  function showHome(type,btn){
+    document.querySelectorAll('.home-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.home-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById('panel-'+type).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // ── INTERACTIVE PLOT MAP ──────────────────────────────────────────────────
+  (function(){
+    var PLOTS=[
+      {type:"a",num:"8296",size:"272m²",price:"From R1,999,000",pts:[{x:1219,y:654},{x:1271,y:710},{x:1325,y:831},{x:1179,y:829},{x:1129,y:655},{x:1217,y:657}]},
+      {type:"s",num:"8297",size:"272m²",price:"From R1,999,000",pts:[{x:1173,y:828},{x:1027,y:824},{x:995,y:655},{x:1127,y:658},{x:1175,y:829}]},
+      {type:"a",num:"8298",size:"272m²",price:"From R1,999,000",pts:[{x:993,y:659},{x:875,y:658},{x:877,y:832},{x:1021,y:833},{x:992,y:662}]},
+      {type:"a",num:"8299",size:"271m²",price:"From R1,999,000",pts:[{x:867,y:659},{x:874,y:828},{x:727,y:825},{x:741,y:653},{x:870,y:657}]},
+      {type:"s",num:"8300",size:"272m²",price:"From R1,999,000",pts:[{x:738,y:655},{x:723,y:828},{x:574,y:830},{x:611,y:655},{x:737,y:655}]},
+      {type:"a",num:"8301",size:"271m²",price:"From R1,999,000",pts:[{x:607,y:656},{x:572,y:832},{x:427,y:830},{x:484,y:656},{x:608,y:658}]},
+      {type:"a",num:"8302",size:"271m²",price:"From R1,999,000",pts:[{x:487,y:655},{x:422,y:830},{x:275,y:834},{x:354,y:657}]},
+      {type:"s",num:"8303",size:"285m²",price:"From R1,999,000",pts:[{x:274,y:828},{x:36,y:827},{x:289,y:660},{x:348,y:660},{x:274,y:825}]},
+      {type:"s",num:"8304",size:"333m²",price:"From R1,999,000",pts:[{x:318,y:598},{x:293,y:658},{x:34,y:828},{x:147,y:604},{x:317,y:598}]},
+      {type:"a",num:"8305",size:"271m²",price:"From R1,999,000",pts:[{x:318,y:592},{x:349,y:497},{x:197,y:506},{x:142,y:608},{x:318,y:591}]},
+      {type:"a",num:"8306",size:"270m²",price:"From R1,999,000",pts:[{x:350,y:497},{x:375,y:428},{x:231,y:434},{x:191,y:511},{x:358,y:493}]},
+      {type:"a",num:"8307",size:"270m²",price:"From R1,999,000",pts:[{x:394,y:365},{x:267,y:371},{x:232,y:432},{x:375,y:431},{x:395,y:364}]},
+      {type:"a",num:"8308",size:"270m²",price:"From R1,999,000",pts:[{x:397,y:361},{x:261,y:371},{x:290,y:315},{x:410,y:312},{x:398,y:360}]},
+      {type:"a",num:"8309",size:"270m²",price:"From R1,999,000",pts:[{x:412,y:310},{x:426,y:267},{x:313,y:273},{x:284,y:321},{x:415,y:312}]},
+      {type:"s",num:"8310",size:"270m²",price:"From R1,999,000",pts:[{x:443,y:222},{x:427,y:262},{x:318,y:267},{x:333,y:218},{x:444,y:224}]},
+      {type:"s",num:"8311",size:"270m²",price:"From R1,999,000",pts:[{x:442,y:228},{x:454,y:186},{x:350,y:192},{x:330,y:225}]},
+      {type:"a",num:"8312",size:"269m²",price:"From R1,999,000",pts:[{x:453,y:185},{x:346,y:190},{x:376,y:149},{x:469,y:153}]},
+      {type:"a",num:"8285",size:"270m²",price:"From R1,999,000",pts:[{x:492,y:157},{x:506,y:105},{x:569,y:103},{x:567,y:156},{x:489,y:157}]},
+      {type:"a",num:"8286",size:"270m²",price:"From R1,999,000",pts:[{x:632,y:95},{x:633,y:148},{x:572,y:154},{x:571,y:98}]},
+      {type:"a",num:"8287",size:"270m²",price:"From R1,999,000",pts:[{x:634,y:93},{x:697,y:91},{x:701,y:145},{x:636,y:150},{x:633,y:94}]},
+      {type:"a",num:"8288",size:"268m²",price:"From R1,999,000",pts:[{x:704,y:142},{x:698,y:91},{x:756,y:88},{x:770,y:136}]},
+      {type:"a",num:"8289",size:"312m²",price:"From R1,999,000",pts:[{x:777,y:134},{x:760,y:87},{x:816,y:82},{x:850,y:113},{x:772,y:133}]},
+      {type:"s",num:"8290",size:"272m²",price:"From R1,999,000",pts:[{x:771,y:149},{x:851,y:119},{x:888,y:143},{x:798,y:170},{x:777,y:147}]},
+      {type:"a",num:"8291",size:"272m²",price:"From R1,999,000",pts:[{x:800,y:173},{x:892,y:143},{x:916,y:172},{x:826,y:204},{x:801,y:171}]},
+      {type:"a",num:"8292",size:"272m²",price:"From R1,999,000",pts:[{x:830,y:208},{x:917,y:173},{x:958,y:206},{x:855,y:238},{x:829,y:208}]},
+      {type:"p",num:"8293",size:"±272m²",price:"Phase 2",pts:[{x:926,y:311},{x:939,y:280},{x:989,y:271},{x:1024,y:281},{x:1066,y:325},{x:969,y:356},{x:921,y:311}]},
+      {type:"p",num:"8294",size:"±272m²",price:"Phase 2",pts:[{x:973,y:358},{x:1072,y:322},{x:1127,y:373},{x:1033,y:413},{x:972,y:358}]},
+      {type:"p",num:"8294",size:"±272m²",price:"Phase 2",pts:[{x:1130,y:383},{x:1037,y:413},{x:1083,y:472},{x:1185,y:430},{x:1134,y:384}]},
+      {type:"p",num:"8294",size:"±272m²",price:"Phase 2",pts:[{x:1086,y:473},{x:1189,y:434},{x:1267,y:502},{x:1169,y:550},{x:1084,y:473}]},
+      {type:"p",num:"8294",size:"±272m²",price:"Phase 2",pts:[{x:1167,y:552},{x:1276,y:502},{x:1359,y:588},{x:1256,y:636},{x:1168,y:556}]},
+      {type:"p",num:"8295",size:"±272m²",price:"Phase 2",pts:[{x:1262,y:634},{x:1355,y:592},{x:1453,y:669},{x:1347,y:729},{x:1257,y:638}]},
+      {type:"p",num:"8295",size:"±272m²",price:"Phase 2",pts:[{x:1349,y:731},{x:1458,y:672},{x:1629,y:831},{x:1322,y:832},{x:1297,y:750},{x:1344,y:729}]},
+      {type:"a",num:"8296",size:"272m²",price:"From R1,999,000",pts:[{x:1002,y:462},{x:1045,y:507},{x:1057,y:562},{x:1029,y:593},{x:935,y:597},{x:898,y:462},{x:1005,y:465}]},
+      {type:"a",num:"8301",size:"271m²",price:"From R1,999,000",pts:[{x:896,y:462},{x:931,y:599},{x:834,y:595},{x:813,y:468},{x:895,y:461}]},
+      {type:"a",num:"8302",size:"271m²",price:"From R1,999,000",pts:[{x:812,y:468},{x:831,y:591},{x:731,y:592},{x:725,y:479},{x:808,y:469}]},
+      {type:"a",num:"8305",size:"271m²",price:"From R1,999,000",pts:[{x:721,y:474},{x:730,y:595},{x:626,y:593},{x:629,y:474},{x:724,y:480}]},
+      {type:"a",num:"8306",size:"270m²",price:"From R1,999,000",pts:[{x:620,y:597},{x:525,y:600},{x:538,y:480},{x:624,y:479},{x:621,y:597}]},
+      {type:"a",num:"8307",size:"270m²",price:"From R1,999,000",pts:[{x:524,y:598},{x:429,y:593},{x:388,y:552},{x:411,y:488},{x:534,y:484},{x:520,y:600}]},
+      {type:"a",num:"8308",size:"270m²",price:"From R1,999,000",pts:[{x:514,y:477},{x:523,y:400},{x:431,y:407},{x:413,y:484},{x:517,y:476}]},
+      {type:"a",num:"8309",size:"270m²",price:"From R1,999,000",pts:[{x:517,y:476},{x:610,y:476},{x:612,y:387},{x:527,y:400},{x:517,y:476}]},
+      {type:"a",num:"8285",size:"270m²",price:"From R1,999,000",pts:[{x:618,y:391},{x:612,y:475},{x:697,y:472},{x:694,y:383},{x:615,y:390}]},
+      {type:"a",num:"8286",size:"270m²",price:"From R1,999,000",pts:[{x:695,y:385},{x:699,y:472},{x:788,y:467},{x:770,y:374},{x:696,y:381}]},
+      {type:"a",num:"8287",size:"270m²",price:"From R1,999,000",pts:[{x:791,y:464},{x:876,y:460},{x:854,y:368},{x:775,y:376},{x:790,y:467}]},
+      {type:"a",num:"8288",size:"268m²",price:"From R1,999,000",pts:[{x:880,y:459},{x:999,y:458},{x:924,y:360},{x:856,y:369}]},
+      {type:"s",num:"8323",size:"271m²",price:"From R1,999,000",pts:[{x:834,y:339},{x:817,y:274},{x:741,y:281},{x:746,y:347},{x:833,y:338}]},
+      {type:"a",num:"8322",size:"271m²",price:"From R1,999,000",pts:[{x:741,y:347},{x:735,y:281},{x:652,y:289},{x:653,y:359},{x:731,y:346}]},
+      {type:"s",num:"8321",size:"271m²",price:"From R1,999,000",pts:[{x:646,y:292},{x:651,y:357},{x:560,y:366},{x:561,y:294},{x:644,y:289}]},
+      {type:"s",num:"8320",size:"325m²",price:"From R1,999,000",pts:[{x:558,y:295},{x:556,y:368},{x:481,y:369},{x:449,y:350},{x:465,y:300},{x:559,y:294}]},
+      {type:"s",num:"8319",size:"258m²",price:"From R1,999,000",pts:[{x:550,y:273},{x:555,y:208},{x:481,y:216},{x:469,y:256},{x:502,y:275},{x:549,y:271}]},
+      {type:"s",num:"8318",size:"271m²",price:"From R1,999,000",pts:[{x:553,y:271},{x:562,y:211},{x:636,y:204},{x:634,y:268},{x:553,y:273}]},
+      {type:"s",num:"8317",size:"271m²",price:"From R1,999,000",pts:[{x:639,y:271},{x:638,y:205},{x:701,y:204},{x:715,y:264},{x:642,y:269}]},
+      {type:"s",num:"8316",size:"292m²",price:"From R1,999,000",pts:[{x:717,y:260},{x:711,y:201},{x:774,y:198},{x:810,y:235},{x:784,y:260},{x:718,y:263}]},
+      {type:"s",num:"8315",size:"278m²",price:"From R1,999,000",pts:[{x:643,y:199},{x:639,y:155},{x:722,y:156},{x:748,y:195},{x:643,y:199}]},
+      {type:"s",num:"8314",size:"275m²",price:"From R1,999,000",pts:[{x:634,y:198},{x:570,y:205},{x:573,y:155},{x:632,y:157},{x:633,y:200}]},
+      {type:"s",num:"8313",size:"260m²",price:"From R1,999,000",pts:[{x:566,y:203},{x:566,y:166},{x:503,y:172},{x:490,y:184},{x:481,y:211},{x:566,y:200}]}
+    ];
+    var CFG={
+      a:{fill:'#76b852',label:'Available',cta:true},
+      s:{fill:'#9E9E9E',label:'Sold',cta:false},
+      p:{fill:'#E8B84B',label:'Phase 2',cta:true}
+    };
+    var ns='http://www.w3.org/2000/svg';
+    var svg=document.getElementById('plotSvg');
+    var wrap=document.getElementById('plotMapWrap');
+    var tip=document.getElementById('plotTooltip');
+    if(!svg||!wrap||!tip) return;
+    var counts={a:0,s:0,p:0};
+    PLOTS.forEach(function(p){counts[p.type]++;});
+    var sa=document.getElementById('statAvail'),ss=document.getElementById('statSold'),sp=document.getElementById('statP2');
+    if(sa) sa.textContent=counts.a;
+    if(ss) ss.textContent=counts.s;
+    if(sp) sp.textContent=counts.p;
+    PLOTS.forEach(function(pl){
+      var poly=document.createElementNS(ns,'polygon');
+      poly.setAttribute('points',pl.pts.map(function(p){return p.x+','+p.y;}).join(' '));
+      poly.classList.add('plot-poly',pl.type);
+      var cx=Math.round(pl.pts.reduce(function(s,p){return s+p.x;},0)/pl.pts.length);
+      var cy=Math.round(pl.pts.reduce(function(s,p){return s+p.y;},0)/pl.pts.length);
+      poly.addEventListener('mouseenter',function(e){showTip(pl,cx,cy);});
+      poly.addEventListener('mouseleave',hideTip);
+      if(CFG[pl.type].cta){
+        poly.addEventListener('click',function(){
+          var t=document.getElementById('homes');
+          if(t) window.scrollTo({top:t.offsetTop-80,behavior:'smooth'});
+        });
+      }
+      svg.appendChild(poly);
+    });
+    function showTip(pl,svgX,svgY){
+      var wRect=wrap.getBoundingClientRect();
+      var pt=svg.createSVGPoint();pt.x=svgX;pt.y=svgY;
+      var sc=pt.matrixTransform(svg.getScreenCTM());
+      var left=sc.x-wRect.left,top=sc.y-wRect.top;
+      var cfg=CFG[pl.type];
+      var priceHtml=pl.type==='s'?'':(pl.type==='p'?'<div class="tt-price">Coming Soon</div>':'<div class="tt-price">'+pl.price+'</div>');
+      tip.innerHTML=
+        '<div class="tt-status" style="color:'+cfg.fill+'">'+cfg.label+'</div>'+
+        '<div class="tt-plotnum">Erf '+pl.num+'</div>'+
+        '<div class="tt-size">'+pl.size+'</div>'+
+        priceHtml+
+        (cfg.cta?'<div class="tt-cta">View Home Designs →</div>':'');
+      var tw=tip.offsetWidth||180,th=tip.offsetHeight||80;
+      var lx=Math.max(tw/2+8,Math.min(left,wRect.width-tw/2-8));
+      var ty=top-th-14;
+      if(ty<4) ty=top+20;
+      tip.style.left=lx+'px';tip.style.top=ty+'px';tip.classList.add('vis');
+    }
+    function hideTip(){tip.classList.remove('vis');}
+  })();
+
+  // Contact form — mailto
+  document.getElementById('contact-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    const d=new FormData(this);
+    const body=encodeURIComponent(
+      `Name: ${d.get('first_name')} ${d.get('last_name')}\n`+
+      `Phone: ${d.get('phone')}\n`+
+      `Interest: ${d.get('interest')}\n\n`+
+      `Message: ${d.get('message')}`
+    );
+    window.location.href=`mailto:Floreer@propcoza.co.za?subject=Enquiry%20%E2%80%94%20Mountain%20View%20Village&body=${body}`;
+  });
+</script>
+</body>
+</html>
