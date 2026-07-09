@@ -231,8 +231,8 @@
     .plot-stat{display:flex;flex-direction:column;align-items:center;gap:5px;}
     .plot-stat .stat-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;}
     .stat-num.available{color:#76b852;}
-    .stat-num.sold{color:#9E9E9E;}
-    .stat-num.phase2{color:#E8B84B;}
+    .stat-num.sold{color:#9A090D;}
+    .stat-num.showhouse{color:#E8B84B;}
     .plot-stat .stat-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
     .plot-map-wrap{position:relative;line-height:0;overflow:hidden;cursor:crosshair;}
     .plot-map-img{width:100%;height:auto;display:block;transition:filter 0.4s ease;}
@@ -240,10 +240,11 @@
     .plot-map-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:all;overflow:visible;}
     .plot-poly{cursor:pointer;transition:fill-opacity 0.2s ease,stroke-opacity 0.2s ease,filter 0.2s ease;}
     .plot-poly.a{fill:#76b852;fill-opacity:0.06;stroke:#76b852;stroke-width:1.5;stroke-opacity:0.45;}
-    .plot-poly.s{fill:#9E9E9E;fill-opacity:0.06;stroke:#9E9E9E;stroke-width:1.5;stroke-opacity:0.35;cursor:default;}
-    .plot-poly.p{fill:#E8B84B;fill-opacity:0.06;stroke:#E8B84B;stroke-width:1.5;stroke-opacity:0.45;}
+    .plot-poly.s{fill:#9A090D;fill-opacity:0.06;stroke:#9A090D;stroke-width:1.5;stroke-opacity:0.35;cursor:default;}
+    .plot-poly.h{fill:#E8B84B;fill-opacity:0.06;stroke:#E8B84B;stroke-width:1.5;stroke-opacity:0.45;}
+    .plot-poly.c{fill:#37474F;fill-opacity:0.08;stroke:#37474F;stroke-width:1.5;stroke-opacity:0.4;cursor:default;}
     .plot-poly.a:hover{fill-opacity:0.28;stroke-opacity:1;filter:drop-shadow(0 0 8px #76b852);}
-    .plot-poly.p:hover{fill-opacity:0.28;stroke-opacity:1;filter:drop-shadow(0 0 8px #E8B84B);}
+    .plot-poly.h:hover{fill-opacity:0.28;stroke-opacity:1;filter:drop-shadow(0 0 8px #E8B84B);}
     .plot-map-legend{
       position:absolute;top:16px;right:16px;
       background:rgba(8,8,8,0.72);backdrop-filter:blur(10px);
@@ -254,8 +255,9 @@
     .legend-row{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:rgba(255,255,255,0.8);white-space:nowrap;}
     .leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
     .leg-dot.a{background:#76b852;}
-    .leg-dot.s{background:#9E9E9E;}
-    .leg-dot.p{background:#E8B84B;}
+    .leg-dot.s{background:#9A090D;}
+    .leg-dot.h{background:#E8B84B;}
+    .leg-dot.c{background:#37474F;}
     .plot-tooltip{
       position:absolute;
       background:rgba(8,8,8,0.93);backdrop-filter:blur(14px);
@@ -710,7 +712,7 @@
     <div class="plot-stats">
       <div class="plot-stat"><span class="stat-num available" id="statAvail">—</span><span class="stat-label">Available</span></div>
       <div class="plot-stat"><span class="stat-num sold" id="statSold">—</span><span class="stat-label">Sold</span></div>
-      <div class="plot-stat"><span class="stat-num phase2" id="statP2">—</span><span class="stat-label">Phase 2</span></div>
+      <div class="plot-stat"><span class="stat-num showhouse" id="statShow">—</span><span class="stat-label">Show House</span></div>
     </div>
   </div>
   <div class="plot-map-wrap" id="plotMapWrap">
@@ -719,7 +721,8 @@
     <div class="plot-map-legend">
       <div class="legend-row"><span class="leg-dot a"></span><span>For Sale — Phase 1</span></div>
       <div class="legend-row"><span class="leg-dot s"></span><span>Sold</span></div>
-      <div class="legend-row"><span class="leg-dot p"></span><span>Phase 2</span></div>
+      <div class="legend-row"><span class="leg-dot h"></span><span>Show House</span></div>
+      <div class="legend-row"><span class="leg-dot c"></span><span>Clubhouse</span></div>
     </div>
     <div class="plot-tooltip" id="plotTooltip"></div>
   </div>
@@ -1130,9 +1133,9 @@
     var PLOTS=[
       {type:"a",num:"8296",size:"272m²",price:"From R1,999,000",pts:[{x:1219,y:654},{x:1271,y:710},{x:1325,y:831},{x:1179,y:829},{x:1129,y:655},{x:1217,y:657}]},
       {type:"s",num:"8297",size:"272m²",price:"From R1,999,000",pts:[{x:1173,y:828},{x:1027,y:824},{x:995,y:655},{x:1127,y:658},{x:1175,y:829}]},
-      {type:"a",num:"8298",size:"272m²",price:"From R1,999,000",pts:[{x:993,y:659},{x:875,y:658},{x:877,y:832},{x:1021,y:833},{x:992,y:662}]},
-      {type:"a",num:"8299",size:"271m²",price:"From R1,999,000",pts:[{x:867,y:659},{x:874,y:828},{x:727,y:825},{x:741,y:653},{x:870,y:657}]},
-      {type:"s",num:"8300",size:"272m²",price:"From R1,999,000",pts:[{x:738,y:655},{x:723,y:828},{x:574,y:830},{x:611,y:655},{x:737,y:655}]},
+      {type:"h",num:"8298",size:"272m²",price:"Open for viewing",pts:[{x:993,y:659},{x:875,y:658},{x:877,y:832},{x:1021,y:833},{x:992,y:662}]},
+      {type:"h",num:"8299",size:"271m²",price:"Open for viewing",pts:[{x:867,y:659},{x:874,y:828},{x:727,y:825},{x:741,y:653},{x:870,y:657}]},
+      {type:"a",num:"8300",size:"272m²",price:"From R1,999,000",pts:[{x:738,y:655},{x:723,y:828},{x:574,y:830},{x:611,y:655},{x:737,y:655}]},
       {type:"a",num:"8301",size:"271m²",price:"From R1,999,000",pts:[{x:607,y:656},{x:572,y:832},{x:427,y:830},{x:484,y:656},{x:608,y:658}]},
       {type:"a",num:"8302",size:"271m²",price:"From R1,999,000",pts:[{x:487,y:655},{x:422,y:830},{x:275,y:834},{x:354,y:657}]},
       {type:"s",num:"8303",size:"285m²",price:"From R1,999,000",pts:[{x:274,y:828},{x:36,y:827},{x:289,y:660},{x:348,y:660},{x:274,y:825}]},
@@ -1140,7 +1143,7 @@
       {type:"a",num:"8305",size:"271m²",price:"From R1,999,000",pts:[{x:318,y:592},{x:349,y:497},{x:197,y:506},{x:142,y:608},{x:318,y:591}]},
       {type:"a",num:"8306",size:"270m²",price:"From R1,999,000",pts:[{x:350,y:497},{x:375,y:428},{x:231,y:434},{x:191,y:511},{x:358,y:493}]},
       {type:"a",num:"8307",size:"270m²",price:"From R1,999,000",pts:[{x:394,y:365},{x:267,y:371},{x:232,y:432},{x:375,y:431},{x:395,y:364}]},
-      {type:"a",num:"8308",size:"270m²",price:"From R1,999,000",pts:[{x:397,y:361},{x:261,y:371},{x:290,y:315},{x:410,y:312},{x:398,y:360}]},
+      {type:"s",num:"8308",size:"270m²",price:"From R1,999,000",pts:[{x:397,y:361},{x:261,y:371},{x:290,y:315},{x:410,y:312},{x:398,y:360}]},
       {type:"a",num:"8309",size:"270m²",price:"From R1,999,000",pts:[{x:412,y:310},{x:426,y:267},{x:313,y:273},{x:284,y:321},{x:415,y:312}]},
       {type:"s",num:"8310",size:"270m²",price:"From R1,999,000",pts:[{x:443,y:222},{x:427,y:262},{x:318,y:267},{x:333,y:218},{x:444,y:224}]},
       {type:"s",num:"8311",size:"270m²",price:"From R1,999,000",pts:[{x:442,y:228},{x:454,y:186},{x:350,y:192},{x:330,y:225}]},
@@ -1153,20 +1156,20 @@
       {type:"s",num:"8290",size:"272m²",price:"From R1,999,000",pts:[{x:771,y:149},{x:851,y:119},{x:888,y:143},{x:798,y:170},{x:777,y:147}]},
       {type:"a",num:"8291",size:"272m²",price:"From R1,999,000",pts:[{x:800,y:173},{x:892,y:143},{x:916,y:172},{x:826,y:204},{x:801,y:171}]},
       {type:"a",num:"8292",size:"272m²",price:"From R1,999,000",pts:[{x:830,y:208},{x:917,y:173},{x:958,y:206},{x:855,y:238},{x:829,y:208}]},
-      {type:"p",num:"8293",size:"±272m²",price:"Phase 2",pts:[{x:926,y:311},{x:939,y:280},{x:989,y:271},{x:1024,y:281},{x:1066,y:325},{x:969,y:356},{x:921,y:311}]},
-      {type:"p",num:"8294",size:"±272m²",price:"Phase 2",pts:[{x:973,y:358},{x:1072,y:322},{x:1127,y:373},{x:1033,y:413},{x:972,y:358}]},
-      {type:"p",num:"8294",size:"±272m²",price:"Phase 2",pts:[{x:1130,y:383},{x:1037,y:413},{x:1083,y:472},{x:1185,y:430},{x:1134,y:384}]},
-      {type:"p",num:"8294",size:"±272m²",price:"Phase 2",pts:[{x:1086,y:473},{x:1189,y:434},{x:1267,y:502},{x:1169,y:550},{x:1084,y:473}]},
-      {type:"p",num:"8294",size:"±272m²",price:"Phase 2",pts:[{x:1167,y:552},{x:1276,y:502},{x:1359,y:588},{x:1256,y:636},{x:1168,y:556}]},
-      {type:"p",num:"8295",size:"±272m²",price:"Phase 2",pts:[{x:1262,y:634},{x:1355,y:592},{x:1453,y:669},{x:1347,y:729},{x:1257,y:638}]},
-      {type:"p",num:"8295",size:"±272m²",price:"Phase 2",pts:[{x:1349,y:731},{x:1458,y:672},{x:1629,y:831},{x:1322,y:832},{x:1297,y:750},{x:1344,y:729}]},
+      {type:"a",num:"8293",size:"±272m²",price:"From R1,999,000",pts:[{x:926,y:311},{x:939,y:280},{x:989,y:271},{x:1024,y:281},{x:1066,y:325},{x:969,y:356},{x:921,y:311}]},
+      {type:"a",num:"8294",size:"±272m²",price:"From R1,999,000",pts:[{x:973,y:358},{x:1072,y:322},{x:1127,y:373},{x:1033,y:413},{x:972,y:358}]},
+      {type:"a",num:"8294",size:"±272m²",price:"From R1,999,000",pts:[{x:1130,y:383},{x:1037,y:413},{x:1083,y:472},{x:1185,y:430},{x:1134,y:384}]},
+      {type:"a",num:"8294",size:"±272m²",price:"From R1,999,000",pts:[{x:1086,y:473},{x:1189,y:434},{x:1267,y:502},{x:1169,y:550},{x:1084,y:473}]},
+      {type:"a",num:"8294",size:"±272m²",price:"From R1,999,000",pts:[{x:1167,y:552},{x:1276,y:502},{x:1359,y:588},{x:1256,y:636},{x:1168,y:556}]},
+      {type:"c",num:"8295",size:"Clubhouse",price:"Estate Amenity",pts:[{x:1262,y:634},{x:1355,y:592},{x:1453,y:669},{x:1347,y:729},{x:1257,y:638}]},
+      {type:"c",num:"8295",size:"Clubhouse",price:"Estate Amenity",pts:[{x:1349,y:731},{x:1458,y:672},{x:1629,y:831},{x:1322,y:832},{x:1297,y:750},{x:1344,y:729}]},
       {type:"a",num:"8296",size:"272m²",price:"From R1,999,000",pts:[{x:1002,y:462},{x:1045,y:507},{x:1057,y:562},{x:1029,y:593},{x:935,y:597},{x:898,y:462},{x:1005,y:465}]},
       {type:"a",num:"8301",size:"271m²",price:"From R1,999,000",pts:[{x:896,y:462},{x:931,y:599},{x:834,y:595},{x:813,y:468},{x:895,y:461}]},
       {type:"a",num:"8302",size:"271m²",price:"From R1,999,000",pts:[{x:812,y:468},{x:831,y:591},{x:731,y:592},{x:725,y:479},{x:808,y:469}]},
       {type:"a",num:"8305",size:"271m²",price:"From R1,999,000",pts:[{x:721,y:474},{x:730,y:595},{x:626,y:593},{x:629,y:474},{x:724,y:480}]},
       {type:"a",num:"8306",size:"270m²",price:"From R1,999,000",pts:[{x:620,y:597},{x:525,y:600},{x:538,y:480},{x:624,y:479},{x:621,y:597}]},
       {type:"a",num:"8307",size:"270m²",price:"From R1,999,000",pts:[{x:524,y:598},{x:429,y:593},{x:388,y:552},{x:411,y:488},{x:534,y:484},{x:520,y:600}]},
-      {type:"a",num:"8308",size:"270m²",price:"From R1,999,000",pts:[{x:514,y:477},{x:523,y:400},{x:431,y:407},{x:413,y:484},{x:517,y:476}]},
+      {type:"a",num:"8293",size:"270m²",price:"From R1,999,000",pts:[{x:514,y:477},{x:523,y:400},{x:431,y:407},{x:413,y:484},{x:517,y:476}]},
       {type:"a",num:"8309",size:"270m²",price:"From R1,999,000",pts:[{x:517,y:476},{x:610,y:476},{x:612,y:387},{x:527,y:400},{x:517,y:476}]},
       {type:"a",num:"8285",size:"270m²",price:"From R1,999,000",pts:[{x:618,y:391},{x:612,y:475},{x:697,y:472},{x:694,y:383},{x:615,y:390}]},
       {type:"a",num:"8286",size:"270m²",price:"From R1,999,000",pts:[{x:695,y:385},{x:699,y:472},{x:788,y:467},{x:770,y:374},{x:696,y:381}]},
@@ -1185,21 +1188,22 @@
       {type:"s",num:"8313",size:"260m²",price:"From R1,999,000",pts:[{x:566,y:203},{x:566,y:166},{x:503,y:172},{x:490,y:184},{x:481,y:211},{x:566,y:200}]}
     ];
     var CFG={
-      a:{fill:'#76b852',label:'Available',cta:true},
-      s:{fill:'#9E9E9E',label:'Sold',cta:false},
-      p:{fill:'#E8B84B',label:'Phase 2',cta:true}
+      a:{fill:'#76b852',label:'Available',cta:true,ctaLabel:'View Home Designs →'},
+      s:{fill:'#9A090D',label:'Sold',cta:false},
+      h:{fill:'#E8B84B',label:'Show House',cta:true,ctaLabel:'Book a Viewing →'},
+      c:{fill:'#37474F',label:'Clubhouse',cta:false}
     };
     var ns='http://www.w3.org/2000/svg';
     var svg=document.getElementById('plotSvg');
     var wrap=document.getElementById('plotMapWrap');
     var tip=document.getElementById('plotTooltip');
     if(!svg||!wrap||!tip) return;
-    var counts={a:0,s:0,p:0};
+    var counts={a:0,s:0,h:0,c:0};
     PLOTS.forEach(function(p){counts[p.type]++;});
-    var sa=document.getElementById('statAvail'),ss=document.getElementById('statSold'),sp=document.getElementById('statP2');
+    var sa=document.getElementById('statAvail'),ss=document.getElementById('statSold'),sh=document.getElementById('statShow');
     if(sa) sa.textContent=counts.a;
     if(ss) ss.textContent=counts.s;
-    if(sp) sp.textContent=counts.p;
+    if(sh) sh.textContent=counts.h;
     PLOTS.forEach(function(pl){
       var poly=document.createElementNS(ns,'polygon');
       poly.setAttribute('points',pl.pts.map(function(p){return p.x+','+p.y;}).join(' '));
@@ -1222,13 +1226,16 @@
       var sc=pt.matrixTransform(svg.getScreenCTM());
       var left=sc.x-wRect.left,top=sc.y-wRect.top;
       var cfg=CFG[pl.type];
-      var priceHtml=pl.type==='s'?'':(pl.type==='p'?'<div class="tt-price">Coming Soon</div>':'<div class="tt-price">'+pl.price+'</div>');
+      var isClubhouse=pl.type==='c';
+      var priceHtml=(pl.type==='s')?'':'<div class="tt-price">'+pl.price+'</div>';
+      var plotNumHtml=isClubhouse?'':'<div class="tt-plotnum">Erf '+pl.num+'</div>';
+      var sizeHtml=isClubhouse?'':'<div class="tt-size">'+pl.size+'</div>';
       tip.innerHTML=
         '<div class="tt-status" style="color:'+cfg.fill+'">'+cfg.label+'</div>'+
-        '<div class="tt-plotnum">Erf '+pl.num+'</div>'+
-        '<div class="tt-size">'+pl.size+'</div>'+
+        plotNumHtml+
+        sizeHtml+
         priceHtml+
-        (cfg.cta?'<div class="tt-cta">View Home Designs →</div>':'');
+        (cfg.cta?'<div class="tt-cta">'+cfg.ctaLabel+'</div>':'');
       var tw=tip.offsetWidth||180,th=tip.offsetHeight||80;
       var lx=Math.max(tw/2+8,Math.min(left,wRect.width-tw/2-8));
       var ty=top-th-14;
