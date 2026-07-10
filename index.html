@@ -22,14 +22,25 @@
       --stone:      #D8CFC0;   /* Stone Beige — borders, cards */
       --white:      #FFFFFF;   /* Warm White — negative space */
       --header-h:   80px;
+      --promo-h:    38px;
     }
 
     html{scroll-behavior:smooth;}
     body{font-family:'Montserrat',sans-serif;color:var(--soft-char);background:var(--white);line-height:1.7;overflow-x:hidden;}
 
+    /* ── PROMO BAR ── */
+    .promo-bar{
+      position:fixed;top:0;left:0;right:0;z-index:1001;
+      height:var(--promo-h);
+      background:var(--burgundy);color:var(--white);
+      display:flex;align-items:center;justify-content:center;
+      font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+      padding:0 16px;text-align:center;
+    }
+
     /* ── HEADER ── */
     #site-header{
-      position:fixed;top:0;left:0;right:0;z-index:1000;
+      position:fixed;top:var(--promo-h);left:0;right:0;z-index:1000;
       background:var(--cream);
       height:var(--header-h);
       display:flex;align-items:center;justify-content:space-between;
@@ -181,7 +192,12 @@
     .ps-stat:last-child{border-right:none;}
     .ps-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--charcoal);line-height:1.2;}
     .ps-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft-char);margin-top:4px;}
-    .ps-note{font-size:14px;color:var(--soft-char);line-height:1.8;margin-bottom:32px;font-weight:300;}
+    .ps-note{font-size:14px;color:var(--soft-char);line-height:1.8;margin-bottom:20px;font-weight:300;}
+    .ps-deposit{
+      font-size:14px;font-weight:600;color:var(--burgundy);
+      background:rgba(154,9,13,0.07);border-left:3px solid var(--burgundy);
+      padding:12px 16px;margin-bottom:24px;line-height:1.6;
+    }
     .ps-actions{display:flex;gap:14px;flex-wrap:wrap;}
     .btn-dark{
       background:var(--charcoal);color:var(--white);text-decoration:none;
@@ -232,19 +248,25 @@
     .plot-stat .stat-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;}
     .stat-num.available{color:#76b852;}
     .stat-num.sold{color:#9A090D;}
-    .stat-num.showhouse{color:#E8B84B;}
+    .stat-num.phase2{color:#E8B84B;}
+    .plot-total-erven{
+      text-align:center;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+      color:rgba(255,255,255,0.4);margin:14px 0 0;
+    }
     .plot-stat .stat-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
     .plot-map-wrap{position:relative;line-height:0;overflow:hidden;cursor:crosshair;}
     .plot-map-img{width:100%;height:auto;display:block;transition:filter 0.4s ease;}
     .plot-map-wrap:hover .plot-map-img{filter:brightness(0.85);}
     .plot-map-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:all;overflow:visible;}
     .plot-poly{cursor:pointer;transition:fill-opacity 0.2s ease,stroke-opacity 0.2s ease,filter 0.2s ease;}
-    .plot-poly.a{fill:#76b852;fill-opacity:0.06;stroke:#76b852;stroke-width:1.5;stroke-opacity:0.45;}
-    .plot-poly.s{fill:#9A090D;fill-opacity:0.06;stroke:#9A090D;stroke-width:1.5;stroke-opacity:0.35;cursor:default;}
-    .plot-poly.h{fill:#E8B84B;fill-opacity:0.06;stroke:#E8B84B;stroke-width:1.5;stroke-opacity:0.45;}
-    .plot-poly.c{fill:#37474F;fill-opacity:0.08;stroke:#37474F;stroke-width:1.5;stroke-opacity:0.4;cursor:default;}
-    .plot-poly.a:hover{fill-opacity:0.28;stroke-opacity:1;filter:drop-shadow(0 0 8px #76b852);}
-    .plot-poly.h:hover{fill-opacity:0.28;stroke-opacity:1;filter:drop-shadow(0 0 8px #E8B84B);}
+    .plot-poly.a{fill:#76b852;fill-opacity:0.1;stroke:#76b852;stroke-width:1.5;stroke-opacity:0.55;}
+    .plot-poly.s{fill:#9A090D;fill-opacity:0.1;stroke:#9A090D;stroke-width:1.5;stroke-opacity:0.5;cursor:default;}
+    .plot-poly.h{fill:#E8B84B;fill-opacity:0.1;stroke:#E8B84B;stroke-width:1.5;stroke-opacity:0.55;}
+    .plot-poly.c{fill:#37474F;fill-opacity:0.12;stroke:#37474F;stroke-width:1.5;stroke-opacity:0.5;cursor:default;}
+    .plot-poly.a:hover{fill-opacity:0.5;stroke-opacity:1;filter:drop-shadow(0 0 10px #76b852);}
+    .plot-poly.s:hover{fill-opacity:0.45;stroke-opacity:1;filter:drop-shadow(0 0 10px #9A090D);}
+    .plot-poly.h:hover{fill-opacity:0.5;stroke-opacity:1;filter:drop-shadow(0 0 10px #E8B84B);}
+    .plot-poly.c:hover{fill-opacity:0.45;stroke-opacity:1;filter:drop-shadow(0 0 10px #37474F);}
     .plot-map-legend{
       position:absolute;top:16px;right:16px;
       background:rgba(8,8,8,0.72);backdrop-filter:blur(10px);
@@ -258,6 +280,55 @@
     .leg-dot.s{background:#9A090D;}
     .leg-dot.h{background:#E8B84B;}
     .leg-dot.c{background:#37474F;}
+    .north-marker{
+      position:absolute;top:16px;left:16px;pointer-events:none;z-index:15;
+      filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+    }
+    .sold-banner{
+      position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:15;
+      background:var(--burgundy);color:#fff;
+      font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;
+      letter-spacing:1.5px;text-transform:uppercase;
+      padding:9px 20px;border-radius:3px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.35);
+      pointer-events:none;
+    }
+    @media(max-width:640px){
+      .sold-banner{font-size:10px;padding:7px 14px;}
+      .north-marker svg{width:32px;height:32px;}
+      .plot-tooltip{padding:8px 12px;min-width:130px;}
+      .tt-status{font-size:13px;margin-bottom:5px;padding-bottom:5px;}
+      .tt-plotnum{font-size:7px;margin-bottom:3px;}
+      .tt-size{font-size:11px;margin-bottom:3px;}
+      .tt-price{font-size:9px;}
+      .tt-cta{font-size:7px;margin-top:6px;padding-top:6px;}
+    }
+    /* ── PLOT MODAL ── */
+    .plot-modal{
+      position:fixed;inset:0;z-index:2000;
+      background:rgba(8,8,8,0.72);backdrop-filter:blur(4px);
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;transition:opacity 0.2s ease;
+      padding:20px;
+    }
+    .plot-modal.vis{opacity:1;pointer-events:all;}
+    .plot-modal-card{
+      background:var(--white);border-radius:4px;
+      padding:36px 32px;max-width:380px;width:100%;
+      position:relative;
+      transform:translateY(8px);transition:transform 0.2s ease;
+    }
+    .plot-modal.vis .plot-modal-card{transform:translateY(0);}
+    .plot-modal-close{
+      position:absolute;top:14px;right:14px;background:none;border:none;
+      font-size:20px;line-height:1;cursor:pointer;color:var(--soft-char);
+      width:28px;height:28px;
+    }
+    .pm-status{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;font-weight:700;margin-bottom:6px;}
+    .pm-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--charcoal);margin-bottom:4px;}
+    .pm-meta{font-size:13px;color:var(--soft-char);margin-bottom:22px;}
+    .pm-actions{display:flex;flex-direction:column;gap:10px;}
+    .pm-actions button{width:100%;text-align:center;font-family:inherit;cursor:pointer;}
     .plot-tooltip{
       position:absolute;
       background:rgba(8,8,8,0.93);backdrop-filter:blur(14px);
@@ -265,14 +336,25 @@
       padding:14px 18px;pointer-events:none;
       opacity:0;transition:opacity 0.15s ease;
       white-space:nowrap;z-index:20;
-      transform:translate(-50%,-115%);
+      transform:translateX(-50%);
       min-width:180px;line-height:1;
     }
     .plot-tooltip.vis{opacity:1;}
+    .plot-tooltip.clubhouse-tip{
+      border:1.5px solid #37474F;
+      background:rgba(12,16,18,0.96);
+      box-shadow:0 0 0 3px rgba(55,71,79,0.25),0 8px 24px rgba(0,0,0,0.4);
+    }
     .tt-status{
-      font-family:'Playfair Display',serif;font-size:12px;font-style:italic;font-weight:400;
+      font-family:'Playfair Display',serif;font-size:19px;font-style:italic;font-weight:700;
       display:block;margin-bottom:10px;padding-bottom:10px;
       border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+    .tt-status.clubhouse-badge{
+      font-style:normal;font-family:'Montserrat',sans-serif;
+      font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+      background:#37474F;color:#fff;padding:6px 10px;border-radius:2px;
+      margin-bottom:12px;display:inline-block;
     }
     .tt-plotnum{
       font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
@@ -472,6 +554,7 @@
     @media(max-width:900px){
       nav{display:none;}
       #site-header{padding:0 24px;}
+      .promo-bar{font-size:10px;letter-spacing:0.5px;padding:0 10px;}
       .container{padding:0 24px;}
       section{padding:64px 0;}
       #estate .grid2,#location .loc-grid,.contact-grid,.home-detail{grid-template-columns:1fr;gap:40px;}
@@ -505,6 +588,9 @@
 </head>
 <body>
 
+<!-- ═══════ PROMO BAR ═══════ -->
+<div class="promo-bar" id="promoBar">🏡 34% Sold — Limited Stands Remaining in Phase 1</div>
+
 <!-- ═══════ HEADER ═══════ -->
 <header id="site-header">
   <a href="#hero" class="header-logo">
@@ -521,7 +607,7 @@
   </nav>
   <div class="header-right">
     <a href="tel:+27238800100" class="header-phone">023 880 0100</a>
-    <a href="#contact" class="header-cta">Enquire Now</a>
+    <a href="#contact" class="header-cta">Register Your Interest</a>
   </div>
 </header>
 
@@ -674,8 +760,9 @@
           <div class="ps-stat"><div class="ps-num">270m²</div><div class="ps-lbl">Erf Size</div></div>
         </div>
         <p class="ps-note">Land &amp; Build packages available — secure your stand and select your house type in one contract. Pricing starts from R600,000 for land. Contact us to receive the full availability sheet and tailored quotation.</p>
+        <p class="ps-deposit">R40,000 deposit secures your home today — make sure yours is <strong>RESERVED</strong>!</p>
         <div class="ps-actions">
-          <a href="#contact" class="btn-dark">Request Availability</a>
+          <a href="#contact" class="btn-dark">Reserve Your New Home</a>
           <a href="https://wa.me/+27823451209?text=Hi%2C%20please%20send%20me%20the%20availability%20sheet%20for%20Mountain%20View%20Village." target="_blank" class="btn-outline-dark">WhatsApp Us</a>
         </div>
       </div>
@@ -710,10 +797,11 @@
       <p>Hover over the estate rendering to explore plot availability across the development.</p>
     </div>
     <div class="plot-stats">
-      <div class="plot-stat"><span class="stat-num available" id="statAvail">—</span><span class="stat-label">Available</span></div>
+      <div class="plot-stat"><span class="stat-num available" id="statAvail">—</span><span class="stat-label">Available Phase 1</span></div>
       <div class="plot-stat"><span class="stat-num sold" id="statSold">—</span><span class="stat-label">Sold</span></div>
-      <div class="plot-stat"><span class="stat-num showhouse" id="statShow">—</span><span class="stat-label">Show House</span></div>
+      <div class="plot-stat"><span class="stat-num phase2" id="statPhase2">—</span><span class="stat-label">Phase 2</span></div>
     </div>
+    <p class="plot-total-erven">Total Erven: 53</p>
   </div>
   <div class="plot-map-wrap" id="plotMapWrap">
     <img src="mvv-assets/estate-photo-main.jpg" alt="Mountain View Village — Site Development Plan" class="plot-map-img" id="plotMapImg"/>
@@ -724,10 +812,29 @@
       <div class="legend-row"><span class="leg-dot h"></span><span>Show House</span></div>
       <div class="legend-row"><span class="leg-dot c"></span><span>Clubhouse</span></div>
     </div>
+    <div class="north-marker" aria-label="North" title="North">
+      <svg viewBox="0 0 60 60" width="40" height="40">
+        <circle cx="30" cy="30" r="27" fill="rgba(8,8,8,0.72)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+        <g transform="rotate(30 30 30)">
+          <path d="M30 10 L37 32 L30 27 L23 32 Z" fill="#fff"/>
+          <line x1="30" y1="27" x2="30" y2="48" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+        </g>
+        <text x="30" y="12" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#fff" transform="rotate(30 30 30)" dy="-1">N</text>
+      </svg>
+    </div>
+    <div class="sold-banner">34% Sold</div>
     <div class="plot-tooltip" id="plotTooltip"></div>
   </div>
   <p class="plot-map-hint">Hover over the rendering to explore plot availability</p>
 </section>
+
+<!-- ═══════ PLOT ACTION MODAL ═══════ -->
+<div class="plot-modal" id="plotModal">
+  <div class="plot-modal-card">
+    <button type="button" class="plot-modal-close" id="plotModalClose" aria-label="Close">&times;</button>
+    <div id="plotModalBody"></div>
+  </div>
+</div>
 
 <!-- ═══════ HOME DESIGNS ═══════ -->
 <section id="homes">
@@ -776,7 +883,7 @@
           </ul>
           <div class="action-row">
             <a href="mvv-assets/type-a1.pdf" target="_blank" class="plan-dl">Download Floor Plan</a>
-            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Enquire Now</a>
+            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Register Your Interest</a>
           </div>
         </div>
       </div>
@@ -811,7 +918,7 @@
           </ul>
           <div class="action-row">
             <a href="mvv-assets/type-a2.pdf" target="_blank" class="plan-dl">Download Floor Plan</a>
-            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Enquire Now</a>
+            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Register Your Interest</a>
           </div>
         </div>
       </div>
@@ -846,7 +953,7 @@
           </ul>
           <div class="action-row">
             <a href="mvv-assets/type-a3.pdf" target="_blank" class="plan-dl">Download Floor Plan</a>
-            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Enquire Now</a>
+            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Register Your Interest</a>
           </div>
         </div>
       </div>
@@ -881,7 +988,7 @@
           </ul>
           <div class="action-row">
             <a href="mvv-assets/type-b1.pdf" target="_blank" class="plan-dl">Download Floor Plan</a>
-            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Enquire Now</a>
+            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Register Your Interest</a>
           </div>
         </div>
       </div>
@@ -916,7 +1023,7 @@
           </ul>
           <div class="action-row">
             <a href="mvv-assets/type-b2.pdf" target="_blank" class="plan-dl">Download Floor Plan</a>
-            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Enquire Now</a>
+            <a href="#contact" class="btn-primary" style="font-size:10px;padding:12px 24px;">Register Your Interest</a>
           </div>
         </div>
       </div>
@@ -1004,6 +1111,7 @@
         <h3>Send an Enquiry</h3>
         <p>We'll respond within 24 hours.</p>
         <form id="contact-form">
+          <input type="hidden" id="plot_erf" name="plot_erf" value=""/>
           <div class="form-row">
             <div class="fg"><label for="first_name">First Name</label><input id="first_name" type="text" name="first_name" placeholder="Your first name" required/></div>
             <div class="fg"><label for="last_name">Last Name</label><input id="last_name" type="text" name="last_name" placeholder="Your last name" required/></div>
@@ -1112,11 +1220,17 @@
   const hdr=document.getElementById('site-header');
   window.addEventListener('scroll',()=>{hdr.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
 
+  // Fixed-stack height (promo bar + header) — used to offset anchor scrolls
+  function getScrollOffset(){
+    var p=document.getElementById('promoBar');
+    return (hdr?hdr.offsetHeight:80)+(p?p.offsetHeight:0)+4;
+  }
+
   // Smooth scroll with header offset
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',function(e){
       const t=document.querySelector(this.getAttribute('href'));
-      if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-80,behavior:'smooth'});}
+      if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-getScrollOffset(),behavior:'smooth'});}
     });
   });
 
@@ -1198,12 +1312,13 @@
     var wrap=document.getElementById('plotMapWrap');
     var tip=document.getElementById('plotTooltip');
     if(!svg||!wrap||!tip) return;
-    var counts={a:0,s:0,h:0,c:0};
-    PLOTS.forEach(function(p){counts[p.type]++;});
-    var sa=document.getElementById('statAvail'),ss=document.getElementById('statSold'),sh=document.getElementById('statShow');
-    if(sa) sa.textContent=counts.a;
-    if(ss) ss.textContent=counts.s;
-    if(sh) sh.textContent=counts.h;
+    // Quick-stat row shows current business-wide figures (Phase 1 + Phase 2 combined),
+    // not a live count of this drawing's polygons — see Phase 2 stands beyond this SDP extract.
+    var STATS_OVERRIDE={avail:18,sold:18,phase2:17,total:53};
+    var sa=document.getElementById('statAvail'),ss=document.getElementById('statSold'),sp2=document.getElementById('statPhase2');
+    if(sa) sa.textContent=STATS_OVERRIDE.avail;
+    if(ss) ss.textContent=STATS_OVERRIDE.sold;
+    if(sp2) sp2.textContent=STATS_OVERRIDE.phase2;
     PLOTS.forEach(function(pl){
       var poly=document.createElementNS(ns,'polygon');
       poly.setAttribute('points',pl.pts.map(function(p){return p.x+','+p.y;}).join(' '));
@@ -1213,10 +1328,7 @@
       poly.addEventListener('mouseenter',function(e){showTip(pl,cx,cy);});
       poly.addEventListener('mouseleave',hideTip);
       if(CFG[pl.type].cta){
-        poly.addEventListener('click',function(){
-          var t=document.getElementById('homes');
-          if(t) window.scrollTo({top:t.offsetTop-80,behavior:'smooth'});
-        });
+        poly.addEventListener('click',function(){openPlotModal(pl);});
       }
       svg.appendChild(poly);
     });
@@ -1230,32 +1342,85 @@
       var priceHtml=(pl.type==='s')?'':'<div class="tt-price">'+pl.price+'</div>';
       var plotNumHtml=isClubhouse?'':'<div class="tt-plotnum">Erf '+pl.num+'</div>';
       var sizeHtml=isClubhouse?'':'<div class="tt-size">'+pl.size+'</div>';
+      var statusHtml=isClubhouse?
+        '<div class="tt-status clubhouse-badge">🏛 '+cfg.label+'</div>':
+        '<div class="tt-status" style="color:'+cfg.fill+'">'+cfg.label+'</div>';
+      tip.classList.toggle('clubhouse-tip',isClubhouse);
       tip.innerHTML=
-        '<div class="tt-status" style="color:'+cfg.fill+'">'+cfg.label+'</div>'+
+        statusHtml+
         plotNumHtml+
         sizeHtml+
         priceHtml+
         (cfg.cta?'<div class="tt-cta">'+cfg.ctaLabel+'</div>':'');
       var tw=tip.offsetWidth||180,th=tip.offsetHeight||80;
       var lx=Math.max(tw/2+8,Math.min(left,wRect.width-tw/2-8));
-      var ty=top-th-14;
-      if(ty<4) ty=top+20;
+      var margin=Math.min(16,Math.max(4,wRect.height*0.03));
+      var fitsAbove=(top-th-14)>=margin;
+      var fitsBelow=(top+th+16)<=(wRect.height-margin);
+      var placeBelow=!fitsAbove&&(fitsBelow||th<top);
+      var ty=placeBelow?(top+16):(top-th-14);
+      ty=Math.max(margin,Math.min(ty,wRect.height-th-margin));
+      tip.classList.toggle('below',placeBelow);
       tip.style.left=lx+'px';tip.style.top=ty+'px';tip.classList.add('vis');
     }
     function hideTip(){tip.classList.remove('vis');}
+
+    // ── Click-to-choose modal (View Home Designs / Reserve Your Home Today) ──
+    var modal=document.getElementById('plotModal');
+    var modalBody=document.getElementById('plotModalBody');
+    function openPlotModal(pl){
+      var cfg=CFG[pl.type];
+      modalBody.innerHTML=
+        '<div class="pm-status" style="color:'+cfg.fill+'">'+cfg.label+'</div>'+
+        '<div class="pm-num">Erf '+pl.num+'</div>'+
+        '<div class="pm-meta">'+pl.size+' &nbsp;·&nbsp; '+pl.price+'</div>'+
+        '<div class="pm-actions">'+
+          '<button type="button" class="btn-dark" id="pmViewDesigns">View Home Designs</button>'+
+          '<button type="button" class="btn-outline-dark" id="pmReserve">Reserve Your Home Today</button>'+
+        '</div>';
+      modal.classList.add('vis');
+      document.getElementById('pmViewDesigns').addEventListener('click',function(){
+        closePlotModal();
+        var t=document.getElementById('homes');
+        if(t) window.scrollTo({top:t.offsetTop-getScrollOffset(),behavior:'smooth'});
+      });
+      document.getElementById('pmReserve').addEventListener('click',function(){
+        closePlotModal();
+        reserveErf(pl.num);
+      });
+    }
+    function closePlotModal(){modal.classList.remove('vis');}
+    modal.addEventListener('click',function(e){if(e.target===modal) closePlotModal();});
+    var pmClose=document.getElementById('plotModalClose');
+    if(pmClose) pmClose.addEventListener('click',closePlotModal);
+
+    function reserveErf(num){
+      var erfField=document.getElementById('plot_erf');
+      var msgField=document.getElementById('message');
+      var interestField=document.getElementById('interest');
+      if(erfField) erfField.value=num;
+      if(msgField && !msgField.value) msgField.value='I\'d like to reserve Erf '+num+' at Mountain View Village. Please send me the reservation agreement and next steps.';
+      if(interestField) interestField.value='Plot only (land from R600,000)';
+      var t=document.getElementById('contact');
+      if(t) window.scrollTo({top:t.offsetTop-getScrollOffset(),behavior:'smooth'});
+    }
+    window.reserveErf=reserveErf;
   })();
 
   // Contact form — mailto
   document.getElementById('contact-form').addEventListener('submit',function(e){
     e.preventDefault();
     const d=new FormData(this);
+    const erf=d.get('plot_erf');
+    const subject=encodeURIComponent(erf?`Reservation — Erf ${erf} — Mountain View Village`:'Enquiry — Mountain View Village');
     const body=encodeURIComponent(
       `Name: ${d.get('first_name')} ${d.get('last_name')}\n`+
       `Phone: ${d.get('phone')}\n`+
-      `Interest: ${d.get('interest')}\n\n`+
-      `Message: ${d.get('message')}`
+      `Interest: ${d.get('interest')}\n`+
+      (erf?`Plot: Erf ${erf}\n`:'')+
+      `\nMessage: ${d.get('message')}`
     );
-    window.location.href=`mailto:Floreer@propcoza.co.za?subject=Enquiry%20%E2%80%94%20Mountain%20View%20Village&body=${body}`;
+    window.location.href=`mailto:Floreer@propcoza.co.za?subject=${subject}&body=${body}`;
   });
 </script>
 </body>
