@@ -91,7 +91,7 @@
     }
     .hero-logo{
       width:min(400px,70vw);margin:0 auto 28px;display:block;
-      filter:drop-shadow(0 4px 24px rgba(0,0,0,0.5));
+      filter:drop-shadow(0 0 14px rgba(255,255,255,0.6)) drop-shadow(0 0 32px rgba(255,255,255,0.35)) drop-shadow(0 4px 24px rgba(0,0,0,0.4));
     }
     .hero-tagline{
       width:min(320px,62vw);margin:0 auto 24px;display:block;opacity:0.85;
@@ -450,7 +450,7 @@
       grid-template-rows:260px 260px;
       gap:3px;
     }
-    .gi{overflow:hidden;position:relative;}
+    .gi{overflow:hidden;position:relative;cursor:pointer;}
     .gi img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
     .gi:hover img{transform:scale(1.05);}
     .gi:nth-child(1){grid-column:span 6;}
@@ -460,6 +460,45 @@
     .gi:nth-child(5){grid-column:span 4;}
     .gi:nth-child(6){grid-column:span 4;}
     .gallery-note{text-align:center;padding:28px;color:rgba(255,255,255,0.3);font-size:12px;letter-spacing:1px;background:var(--charcoal);}
+
+    /* ── GALLERY LIGHTBOX ── */
+    .lightbox{
+      position:fixed;inset:0;z-index:3000;
+      background:rgba(8,8,8,0.95);
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;transition:opacity 0.2s ease;
+    }
+    .lightbox.vis{opacity:1;pointer-events:all;}
+    .lightbox-img{
+      max-width:86vw;max-height:82vh;object-fit:contain;
+      box-shadow:0 12px 48px rgba(0,0,0,0.5);
+    }
+    .lightbox-close{
+      position:absolute;top:20px;right:28px;background:none;border:none;
+      color:var(--white);font-size:36px;line-height:1;cursor:pointer;
+      width:44px;height:44px;
+    }
+    .lightbox-nav{
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);
+      color:var(--white);font-size:32px;line-height:1;cursor:pointer;
+      width:52px;height:52px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      transition:background 0.2s;
+    }
+    .lightbox-nav:hover{background:rgba(255,255,255,0.18);}
+    .lightbox-prev{left:20px;}
+    .lightbox-next{right:20px;}
+    .lightbox-caption{
+      position:absolute;bottom:24px;left:0;right:0;text-align:center;
+      color:rgba(255,255,255,0.6);font-size:12px;letter-spacing:1px;
+    }
+    @media(max-width:640px){
+      .lightbox-nav{width:40px;height:40px;font-size:24px;}
+      .lightbox-prev{left:8px;}
+      .lightbox-next{right:8px;}
+      .lightbox-close{top:10px;right:14px;font-size:28px;}
+    }
 
     /* ── CONTACT ── */
     #contact{background:var(--cream);}
@@ -608,7 +647,7 @@
   <div id="hero-bg"></div>
   <div id="hero-overlay"></div>
   <div id="hero-content">
-    <img src="mvv-assets/mvv-brand.png" alt="Mountain View Village Estate" class="hero-logo"/>
+    <img src="mvv-assets/mvv-main-logo.png" alt="Mountain View Village" class="hero-logo"/>
     <img src="mvv-assets/tagline.png" alt="It's good to feel @ home" class="hero-tagline"/>
     <h1>A Gated Estate in the Heart of the Breede River Valley</h1>
     <p>Modern freestanding homes nestled beneath the Langeberg Mountains — where security, community and natural beauty come together.</p>
@@ -847,11 +886,11 @@
         <div class="plan-box"><img src="mvv-assets/floorplan-a1.png" alt="Type A1 — 94m² Floor Plan"/></div>
         <div class="home-info">
           <h3>Type A1</h3>
-          <p class="home-subtitle">2 Bedroom Freestanding &nbsp;·&nbsp; 94m² Total</p>
+          <p class="home-subtitle">2 Bedroom Freestanding &nbsp;·&nbsp; 69m² Dwelling</p>
           <div class="specs-grid">
             <div class="spec"><div class="sv">2</div><div class="sk">Bedrooms</div></div>
             <div class="spec"><div class="sv">1</div><div class="sk">Bathroom</div></div>
-            <div class="spec"><div class="sv">69m²</div><div class="sk">Dwelling</div></div>
+            <div class="spec"><div class="sv">94m²</div><div class="sk">Total</div></div>
             <div class="spec"><div class="sv">21m²</div><div class="sk">Garage</div></div>
           </div>
           <div class="price-block">
@@ -882,11 +921,11 @@
         <div class="plan-box"><img src="mvv-assets/floorplan-a2.png" alt="Type A2 — 153m² Floor Plan"/></div>
         <div class="home-info">
           <h3>Type A2</h3>
-          <p class="home-subtitle">2 Bedroom + Braai Room &nbsp;·&nbsp; 153m² Total</p>
+          <p class="home-subtitle">2 Bedroom + Braai Room &nbsp;·&nbsp; 108m² Dwelling</p>
           <div class="specs-grid">
             <div class="spec"><div class="sv">2</div><div class="sk">Bedrooms</div></div>
             <div class="spec"><div class="sv">2</div><div class="sk">Bathrooms</div></div>
-            <div class="spec"><div class="sv">108m²</div><div class="sk">Dwelling</div></div>
+            <div class="spec"><div class="sv">153m²</div><div class="sk">Total</div></div>
             <div class="spec"><div class="sv">41m²</div><div class="sk">Double Garage</div></div>
           </div>
           <div class="price-block">
@@ -917,11 +956,11 @@
         <div class="plan-box"><img src="mvv-assets/floorplan-a3.png" alt="Type A3 — 153m² Floor Plan"/></div>
         <div class="home-info">
           <h3>Type A3</h3>
-          <p class="home-subtitle">3 Bedroom + Braai Room &nbsp;·&nbsp; 153m² Total</p>
+          <p class="home-subtitle">3 Bedroom + Braai Room &nbsp;·&nbsp; 110m² Dwelling</p>
           <div class="specs-grid">
             <div class="spec"><div class="sv">3</div><div class="sk">Bedrooms</div></div>
             <div class="spec"><div class="sv">2</div><div class="sk">Bathrooms</div></div>
-            <div class="spec"><div class="sv">110m²</div><div class="sk">Dwelling</div></div>
+            <div class="spec"><div class="sv">153m²</div><div class="sk">Total</div></div>
             <div class="spec"><div class="sv">37m²</div><div class="sk">Double Garage</div></div>
           </div>
           <div class="price-block">
@@ -952,11 +991,11 @@
         <div class="plan-box"><img src="mvv-assets/floorplan-b1.png" alt="Type B1 — 108m² Floor Plan"/></div>
         <div class="home-info">
           <h3>Type B1</h3>
-          <p class="home-subtitle">2 Bedroom &nbsp;·&nbsp; 108m² Total</p>
+          <p class="home-subtitle">2 Bedroom &nbsp;·&nbsp; 82m² Dwelling</p>
           <div class="specs-grid">
             <div class="spec"><div class="sv">2</div><div class="sk">Bedrooms</div></div>
             <div class="spec"><div class="sv">2</div><div class="sk">Bathrooms</div></div>
-            <div class="spec"><div class="sv">82m²</div><div class="sk">Dwelling</div></div>
+            <div class="spec"><div class="sv">108m²</div><div class="sk">Total</div></div>
             <div class="spec"><div class="sv">22m²</div><div class="sk">Garage</div></div>
           </div>
           <div class="price-block">
@@ -987,11 +1026,11 @@
         <div class="plan-box"><img src="mvv-assets/floorplan-b2.png" alt="Type B2 — 120m² Floor Plan"/></div>
         <div class="home-info">
           <h3>Type B2</h3>
-          <p class="home-subtitle">2 Bedroom + Double Garage &nbsp;·&nbsp; 120m² Total</p>
+          <p class="home-subtitle">2 Bedroom + Double Garage &nbsp;·&nbsp; 80m² Dwelling</p>
           <div class="specs-grid">
             <div class="spec"><div class="sv">2</div><div class="sk">Bedrooms</div></div>
             <div class="spec"><div class="sv">2</div><div class="sk">Bathrooms</div></div>
-            <div class="spec"><div class="sv">80m²</div><div class="sk">Dwelling</div></div>
+            <div class="spec"><div class="sv">120m²</div><div class="sk">Total</div></div>
             <div class="spec"><div class="sv">35m²</div><div class="sk">Double Garage</div></div>
           </div>
           <div class="price-block">
@@ -1056,7 +1095,7 @@
       </div>
       <div class="map-wrap">
         <iframe
-          src="https://maps.google.com/maps?q=Corner+Paul+Kruger+%26+Waterkant+Street%2C+Robertson%2C+Western+Cape%2C+6705%2C+South+Africa&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          src="https://maps.google.com/maps?q=-33.797871,19.890298&t=&z=17&ie=UTF8&iwloc=&output=embed"
           allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           title="Mountain View Village location map">
         </iframe>
@@ -1074,7 +1113,7 @@
       <div class="divider c light"></div>
     </div>
   </div>
-  <div class="gallery-grid">
+  <div class="gallery-grid" id="galleryGrid">
     <div class="gi"><img src="mvv-assets/hero-aerial-clean.jpg" alt="Robertson Valley aerial view"/></div>
     <div class="gi"><img src="mvv-assets/entrance.png" alt="Mountain View Village entrance"/></div>
     <div class="gi"><img src="mvv-assets/mountain1.jpg" alt="Langeberg Mountains, Robertson"/></div>
@@ -1084,6 +1123,15 @@
   </div>
   <p class="gallery-note">More photography and video coming soon &nbsp;·&nbsp; Contact us to arrange a site visit</p>
 </section>
+
+<!-- ═══════ GALLERY LIGHTBOX ═══════ -->
+<div class="lightbox" id="lightbox">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">&#8249;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt=""/>
+  <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">&#8250;</button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
 
 <!-- ═══════ CONTACT ═══════ -->
 <section id="contact">
@@ -1236,7 +1284,7 @@
       {type:"s",num:"8297",size:"272m²",price:"From R1,999,000",pts:[{x:1173,y:828},{x:1027,y:824},{x:995,y:655},{x:1127,y:658},{x:1175,y:829}]},
       {type:"h",num:"8298",size:"272m²",price:"Open for viewing",pts:[{x:993,y:659},{x:875,y:658},{x:877,y:832},{x:1021,y:833},{x:992,y:662}]},
       {type:"h",num:"8299",size:"271m²",price:"Open for viewing",pts:[{x:867,y:659},{x:874,y:828},{x:727,y:825},{x:741,y:653},{x:870,y:657}]},
-      {type:"a",num:"8300",size:"272m²",price:"From R1,999,000",pts:[{x:738,y:655},{x:723,y:828},{x:574,y:830},{x:611,y:655},{x:737,y:655}]},
+      {type:"s",num:"8300",size:"272m²",price:"From R1,999,000",pts:[{x:738,y:655},{x:723,y:828},{x:574,y:830},{x:611,y:655},{x:737,y:655}]},
       {type:"a",num:"8301",size:"271m²",price:"From R1,999,000",pts:[{x:607,y:656},{x:572,y:832},{x:427,y:830},{x:484,y:656},{x:608,y:658}]},
       {type:"a",num:"8302",size:"271m²",price:"From R1,999,000",pts:[{x:487,y:655},{x:422,y:830},{x:275,y:834},{x:354,y:657}]},
       {type:"s",num:"8303",size:"285m²",price:"From R1,999,000",pts:[{x:274,y:828},{x:36,y:827},{x:289,y:660},{x:348,y:660},{x:274,y:825}]},
@@ -1392,6 +1440,35 @@
       if(t) window.scrollTo({top:t.offsetTop-getScrollOffset(),behavior:'smooth'});
     }
     window.reserveErf=reserveErf;
+  })();
+
+  // ── GALLERY LIGHTBOX ──────────────────────────────────────────────────────
+  (function(){
+    var thumbs=Array.prototype.slice.call(document.querySelectorAll('#galleryGrid .gi img'));
+    if(!thumbs.length) return;
+    var lb=document.getElementById('lightbox');
+    var lbImg=document.getElementById('lightboxImg');
+    var lbCaption=document.getElementById('lightboxCaption');
+    var idx=0;
+    function show(i){
+      idx=(i+thumbs.length)%thumbs.length;
+      lbImg.src=thumbs[idx].src;
+      lbImg.alt=thumbs[idx].alt;
+      lbCaption.textContent=thumbs[idx].alt+' — '+(idx+1)+' / '+thumbs.length;
+    }
+    function open(i){show(i);lb.classList.add('vis');document.body.style.overflow='hidden';}
+    function close(){lb.classList.remove('vis');document.body.style.overflow='';}
+    thumbs.forEach(function(img,i){img.addEventListener('click',function(){open(i);});});
+    document.getElementById('lightboxClose').addEventListener('click',close);
+    document.getElementById('lightboxPrev').addEventListener('click',function(){show(idx-1);});
+    document.getElementById('lightboxNext').addEventListener('click',function(){show(idx+1);});
+    lb.addEventListener('click',function(e){if(e.target===lb) close();});
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('vis')) return;
+      if(e.key==='Escape') close();
+      if(e.key==='ArrowLeft') show(idx-1);
+      if(e.key==='ArrowRight') show(idx+1);
+    });
   })();
 
   // Contact form — mailto
