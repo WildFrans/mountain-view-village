@@ -636,7 +636,7 @@
 <body>
 
 <!-- ═══════ PROMO BAR ═══════ -->
-<div class="promo-bar" id="promoBar">🏡 36% Sold — Limited Stands Remaining in Phase 1</div>
+<div class="promo-bar" id="promoBar">🏡 34% Sold — Limited Stands Remaining in Phase 1</div>
 
 <!-- ═══════ HEADER ═══════ -->
 <header id="site-header">
@@ -810,11 +810,11 @@
       </div>
       <div class="ps-right">
         <h3>What's Available</h3>
-        <p>Phase 1 stands are selling fast — a mix of standard and premium corner stands. Both show houses have now been sold.</p>
+        <p>Phase 1 stands are selling fast — a mix of standard and premium corner stands, plus one fully built show house back on the market.</p>
         <ul class="availability-list">
           <li><span class="al-type">Standard Stands — from 268m²</span><span class="al-status al-available">Available</span></li>
           <li><span class="al-type">Corner Stands — from 269m²</span><span class="al-status al-available">Available</span></li>
-          <li><span class="al-type">Show Houses — Built &amp; Occupied</span><span class="al-status al-sold">Sold</span></li>
+          <li><span class="al-type">Show House — Built &amp; Ready</span><span class="al-status al-show">For Sale</span></li>
         </ul>
       </div>
     </div>
@@ -851,6 +851,7 @@
     <div class="plot-map-legend">
       <div class="legend-row"><span class="leg-dot a"></span><span>For Sale — Phase 1</span></div>
       <div class="legend-row"><span class="leg-dot s"></span><span>Sold</span></div>
+      <div class="legend-row"><span class="leg-dot h"></span><span>Show House</span></div>
       <div class="legend-row"><span class="leg-dot c"></span><span>Clubhouse</span></div>
     </div>
     <div class="north-marker" aria-label="North" title="North">
@@ -863,7 +864,7 @@
         <text x="30" y="12" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#fff" transform="rotate(30 30 30)" dy="-1">N</text>
       </svg>
     </div>
-    <div class="sold-banner">36% Sold</div>
+    <div class="sold-banner">34% Sold</div>
     <div class="plot-tooltip" id="plotTooltip"></div>
   </div>
   <p class="plot-map-hint">Hover over the rendering to explore plot availability</p>
@@ -1304,7 +1305,7 @@
     var PLOTS=[
       {type:"a",num:"8296",size:"272m²",price:"From R1,999,000",pts:[{x:1219,y:654},{x:1271,y:710},{x:1325,y:831},{x:1179,y:829},{x:1129,y:655},{x:1217,y:657}]},
       {type:"s",num:"8297",size:"272m²",price:"From R1,999,000",pts:[{x:1173,y:828},{x:1027,y:824},{x:995,y:655},{x:1127,y:658},{x:1175,y:829}]},
-      {type:"s",num:"8298",size:"272m²",price:"Sold",pts:[{x:993,y:659},{x:875,y:658},{x:877,y:832},{x:1021,y:833},{x:992,y:662}]},
+      {type:"h",num:"8298",size:"272m²",price:"Open for viewing",pts:[{x:993,y:659},{x:875,y:658},{x:877,y:832},{x:1021,y:833},{x:992,y:662}]},
       {type:"s",num:"8299",size:"271m²",price:"Sold",pts:[{x:867,y:659},{x:874,y:828},{x:727,y:825},{x:741,y:653},{x:870,y:657}]},
       {type:"s",num:"8300",size:"272m²",price:"From R1,999,000",pts:[{x:738,y:655},{x:723,y:828},{x:574,y:830},{x:611,y:655},{x:737,y:655}]},
       {type:"a",num:"8301",size:"271m²",price:"From R1,999,000",pts:[{x:607,y:656},{x:572,y:832},{x:427,y:830},{x:484,y:656},{x:608,y:658}]},
@@ -1371,7 +1372,7 @@
     if(!svg||!wrap||!tip) return;
     // Quick-stat row shows current business-wide figures (Phase 1 + Phase 2 combined),
     // not a live count of this drawing's polygons — see Phase 2 stands beyond this SDP extract.
-    var STATS_OVERRIDE={avail:17,sold:19,phase2:17,total:53};
+    var STATS_OVERRIDE={avail:18,sold:18,phase2:17,total:53};
     var sa=document.getElementById('statAvail'),ss=document.getElementById('statSold'),sp2=document.getElementById('statPhase2');
     if(sa) sa.textContent=STATS_OVERRIDE.avail;
     if(ss) ss.textContent=STATS_OVERRIDE.sold;
