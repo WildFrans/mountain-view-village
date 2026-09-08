@@ -523,6 +523,11 @@
       letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:1px;transition:background 0.2s;
     }
     .form-submit:hover{background:var(--burgundy);}
+    .form-submit:disabled{opacity:0.6;cursor:default;}
+    .form-status{margin-top:18px;padding:16px 18px;border-radius:2px;font-size:13.5px;line-height:1.6;}
+    .form-status.is-success{background:#DCFCE7;color:#166534;border:1px solid #86EFAC;}
+    .form-status.is-error{background:#FEE2E2;color:#991B1B;border:1px solid #FCA5A5;}
+    .form-status strong{display:block;font-weight:700;margin-bottom:2px;}
     .contact-info h3{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:28px;color:var(--charcoal);}
     .cd{display:flex;gap:14px;margin-bottom:24px;align-items:flex-start;}
     .cd-icon{
@@ -1119,7 +1124,7 @@
     </div>
   </div>
   <div class="gallery-grid" id="galleryGrid">
-    <div class="gi"><img src="mvv-assets/hero-aerial-clean.jpg" alt="Robertson Valley aerial view"/></div>
+    <div class="gi"><img src="mvv-assets/hero-aerial-clean.jpg" alt="Aerial view of the estate and Robertson valley"/></div>
     <div class="gi"><img src="mvv-assets/entrance.png" alt="Mountain View Village entrance"/></div>
     <div class="gi"><img src="mvv-assets/mountain1.jpg" alt="Langeberg Mountains, Robertson"/></div>
     <div class="gi"><img src="mvv-assets/robertson-town.png" alt="Robertson from above"/></div>
@@ -1175,8 +1180,10 @@
             </select>
           </div>
           <div class="fg"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us what you're looking for..."></textarea></div>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"/>
           <button type="submit" class="form-submit">Send Enquiry</button>
         </form>
+        <div id="form-status" class="form-status" role="status" aria-live="polite" hidden></div>
       </div>
       <div class="contact-info">
         <h3>Contact Details</h3>
@@ -1483,21 +1490,62 @@
     });
   })();
 
-  // Contact form — mailto
-  document.getElementById('contact-form').addEventListener('submit',function(e){
-    e.preventDefault();
-    const d=new FormData(this);
-    const erf=d.get('plot_erf');
-    const subject=encodeURIComponent(erf?`Reservation — Erf ${erf} — Mountain View Village`:'Enquiry — Mountain View Village');
-    const body=encodeURIComponent(
-      `Name: ${d.get('first_name')} ${d.get('last_name')}\n`+
-      `Phone: ${d.get('phone')}\n`+
-      `Interest: ${d.get('interest')}\n`+
-      (erf?`Plot: Erf ${erf}\n`:'')+
-      `\nMessage: ${d.get('message')}`
-    );
-    window.location.href=`mailto:Floreer@propcoza.co.za?subject=${subject}&body=${body}`;
-  });
+  // Contact form — silent background submit to Floreer@propcoza.co.za (no email client)
+  (function(){
+    var form=document.getElementById('contact-form');
+    if(!form) return;
+    var statusEl=document.getElementById('form-status');
+    var btn=form.querySelector('.form-submit');
+    var ENDPOINT='https://formsubmit.co/ajax/Floreer@propcoza.co.za';
+
+    function setStatus(kind,html){
+      statusEl.className='form-status is-'+kind;
+      statusEl.innerHTML=html;
+      statusEl.hidden=false;
+    }
+
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(form._honey && form._honey.value) return; // honeypot — bot; drop silently
+      var d=new FormData(form);
+      var erf=d.get('plot_erf');
+      var payload={
+        _subject: erf ? ('Reservation enquiry — Erf '+erf+' — Mountain View Village')
+                      : 'Website enquiry — Mountain View Village',
+        _template:'table',
+        _captcha:'false',
+        _replyto:d.get('email')||'',
+        Name:((d.get('first_name')||'')+' '+(d.get('last_name')||'')).trim(),
+        Email:d.get('email')||'—',
+        Phone:d.get('phone')||'—',
+        Interest:d.get('interest')||'—',
+        Plot: erf ? ('Erf '+erf) : '—',
+        Message:d.get('message')||'—'
+      };
+      btn.disabled=true;
+      var orig=btn.textContent;
+      btn.textContent='Sending…';
+      statusEl.hidden=true;
+
+      fetch(ENDPOINT,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(payload)
+      })
+      .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+      .then(function(data){
+        if(!(data && (data.success===true || data.success==='true'))) throw new Error('not sent');
+        form.reset();
+        form.style.display='none';
+        setStatus('success','<strong>Thank you — your enquiry is on its way.</strong>Our team will be in touch within 24 hours.');
+      })
+      .catch(function(){
+        btn.disabled=false;
+        btn.textContent=orig;
+        setStatus('error','<strong>That didn’t go through.</strong>Please call <a href="tel:+27238800100">023 880 0100</a> or <a href="https://wa.me/+27823451209" target="_blank" rel="noopener">message us on WhatsApp</a>.');
+      });
+    });
+  })();
 </script>
 </body>
 </html>
