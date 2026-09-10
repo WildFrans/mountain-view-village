@@ -1521,6 +1521,7 @@
       var d=new FormData(form);
       var erf=d.get('plot_erf');
       var payload={
+        _url:'https://mountainview-village.co.za/',
         _subject: erf ? ('Reservation enquiry — Erf '+erf+' — Mountain View Village')
                       : 'Website enquiry — Mountain View Village',
         _template:'table',
@@ -1550,10 +1551,20 @@
         form.style.display='none';
         setStatus('success','<strong>Thank you — your enquiry is on its way.</strong>Our team will be in touch within 24 hours.');
       })
-      .catch(function(){
+      .catch(function(err){
+        console.error('[MVV contact form] submission failed:', err);
         btn.disabled=false;
         btn.textContent=orig;
-        setStatus('error','<strong>That didn’t go through.</strong>Please call <a href="tel:+27238800100">023 880 0100</a> or <a href="https://wa.me/+27823451209" target="_blank" rel="noopener">message us on WhatsApp</a>.');
+        var body=encodeURIComponent(
+          'Name: '+payload.Name+'\n'+
+          'Email: '+payload.Email+'\n'+
+          'Phone: '+payload.Phone+'\n'+
+          'Interest: '+payload.Interest+'\n'+
+          'Plot: '+payload.Plot+'\n\n'+
+          'Message:\n'+payload.Message
+        );
+        var mailto='mailto:Floreer@propcoza.co.za?subject='+encodeURIComponent(payload._subject)+'&body='+body;
+        setStatus('error','<strong>That didn’t go through.</strong>Please <a href="'+mailto+'">send it by email</a>, call <a href="tel:+27238800100">023 880 0100</a>, or <a href="https://wa.me/+27823451209" target="_blank" rel="noopener">WhatsApp us</a>.');
       });
     });
   })();
