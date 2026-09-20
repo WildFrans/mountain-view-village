@@ -258,7 +258,7 @@
     .plot-stat .stat-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;}
     .stat-num.available{color:#76b852;}
     .stat-num.sold{color:#9A090D;}
-    .stat-num.phase2{color:#E8B84B;}
+    .stat-num.phase2{color:#76b852;}
     .plot-total-erven{
       text-align:center;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
       color:rgba(255,255,255,0.4);margin:14px 0 0;
@@ -475,6 +475,7 @@
     .gi:hover img{transform:scale(1.05);}
     .gi.gi-more{display:none;}
     .gallery-grid.expanded .gi.gi-more{display:block;}
+    .gallery-grid.expanded .gi:last-child:nth-child(3n+1){grid-column:span 3;}
     .gallery-grid:not(.expanded)::after{
       content:'';position:absolute;left:0;right:0;bottom:0;height:130px;pointer-events:none;
       background:linear-gradient(to bottom,rgba(64,64,65,0),var(--charcoal));
@@ -1155,7 +1156,6 @@
     <div class="gi"><img src="mvv-assets/village-aerial-goldenhour.jpg" alt="Aerial view of the village at golden hour beside the canal" loading="lazy"/></div>
     <div class="gi gi-more"><img src="mvv-assets/estate-aerial.jpg" alt="Aerial view of the village homes and surrounding vineyards" loading="lazy"/></div>
     <div class="gi gi-more"><img src="mvv-assets/village-aerial-topdown.jpg" alt="Overhead view of the village layout and dam" loading="lazy"/></div>
-    <div class="gi gi-more"><img src="mvv-assets/village-aerial-topdown-2.jpg" alt="Overhead view of completed homes and remaining stands" loading="lazy"/></div>
     <div class="gi gi-more"><img src="mvv-assets/village-aerial-home-plots.jpg" alt="Overhead view of a completed home among open stands" loading="lazy"/></div>
     <div class="gi gi-more"><img src="mvv-assets/village-aerial-mountains.jpg" alt="The village, Robertson and the mountains beyond" loading="lazy"/></div>
     <!-- Binne die huise -->
@@ -1174,14 +1174,11 @@
     <div class="gi gi-more"><img src="mvv-assets/interior-garage.jpg" alt="Double garage with automated door" loading="lazy"/></div>
     <!-- Erwe beskikbaar -->
     <div class="gi gi-more"><img src="mvv-assets/plot-aerial-marked.jpg" alt="Aerial view with an available stand marked out" loading="lazy"/></div>
-    <div class="gi gi-more"><img src="mvv-assets/plot-marked.jpg" alt="An available stand marked out at street level" loading="lazy"/></div>
     <div class="gi gi-more"><img src="mvv-assets/plot-open.jpg" alt="Open stand ready to build on, boundary walls in place" loading="lazy"/></div>
     <!-- Robertson en die vallei -->
     <div class="gi"><img src="mvv-assets/hero-aerial-clean.jpg" alt="Aerial panorama of Robertson and the Breede River valley" loading="lazy"/></div>
     <div class="gi gi-more"><img src="mvv-assets/valley-panorama.jpg" alt="The Breede River valley, vineyards and the Langeberg range" loading="lazy"/></div>
-    <div class="gi gi-more"><img src="mvv-assets/robertson-aerial-sun.jpg" alt="Robertson from the air with the sun over the mountains" loading="lazy"/></div>
     <div class="gi gi-more"><img src="mvv-assets/robertson-aerial-mountain.jpg" alt="Robertson spread out beneath the mountain range" loading="lazy"/></div>
-    <div class="gi gi-more"><img src="mvv-assets/robertson-winery-aerial.jpg" alt="Robertson's winery district from above" loading="lazy"/></div>
     <div class="gi gi-more"><img src="mvv-assets/robertson-town.png" alt="Robertson from above" loading="lazy"/></div>
     <div class="gi gi-more"><img src="mvv-assets/robertson-oak-street.jpg" alt="Oak-lined street in Robertson" loading="lazy"/></div>
     <div class="gi gi-more"><img src="mvv-assets/river.jpg" alt="The Breede River near Robertson" loading="lazy"/></div>
